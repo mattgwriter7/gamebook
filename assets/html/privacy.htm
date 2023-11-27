@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Privacy</title>
+<!--
+	privacy.html - version 1.0
+	with CSS     - version 1.0
+-->
+<style>
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+	/* CUSTOM */
+	
+	body { 
+		font-size: 4vw; 
+		padding: 1em; 
+		background-color: #000;
+		color: #fff;
+		line-height: 1.4;
+		font-family: Arial,Helvetica Neue,Helvetica,sans-serif; 
+	}
+	
+	body.dark {
+		background-color: #000;
+		color: #fff;	
+	}
+
+	body.light {
+		background-color: #fff;
+		color: #000;	
+	}
+
+	.arial 		{ font-family: Arial,Helvetica Neue,Helvetica,sans-serif;  }
+	.georgia 	{ font-family: Georgia,Times,Times New Roman,serif; }
+	.verdana	{ font-family: Verdana,Geneva,sans-serif; }
+	
+	h1 { font-size: 140%; font-weight: bold; }
+	h2 { font-size: 120%; font-weight: bold; }
+	h3 { font-size: 100%; font-weight: bold; }
+	
+	b { font-weight: bold; }
+	i { font-style: oblique; }
+	
+	p { margin-bottom: 1em; }
+
+	a:link, a:visited, a:hover, a:active {
+		color: #25c6da;
+	}
+
+	/* START OF SIZES */
+	.huge 	{ font-size: 140%; }
+	.big 		{ font-size: 120%; }
+	.normal	{ font-size: 100%; }
+	.small 	{ font-size: 90%; }
+	.tiny 	{ font-size: 75%; }
+	
+	/* START OF FONT COLORS */
+	
+	.white 	{ color: #fff; }
+	.black 	{ color: #000; }
+	.yellow { color: Yellow; }
+	.blue 	{ color: #25c6da; }
+	.green 	{ color: #6fb589; }
+	.red		{ color: #df4739; }
+
+	.grey 	{ color: #999; }
+	.ltgrey	{ color: #ccc; }
+	.dkgrey { color: #222; }
+
+			/* START OF LINK COLORS */
+			a.white:link, a.white:visited, a.white:hover, a.white:active { color: #fff; }
+			a.black:link, a.black:visited, a.black:hover, a.black:active { color: #000; }	
+			a.blue:link, a.blue:visited, a.blue:hover, a.blue:active { color: #25c6da; }
+			a.yellow:link, a.yellow:visited, a.yellow:hover, a.yellow:active { color: Yellow; }
+			a.green:link, a.green:visited, a.green:hover, a.green:active { color: #6fb589; }
+			a.red:link, a.red:visited, a.red:hover, a.red:active { color: #df4739; }			
+					
+					/* START OF DIV BACKGROUND COLORS */
+					
+					div.white 	{ background-color: #fff; }
+					div.black 	{ background-color: #000; }
+					div.yellow { background-color: Yellow; }
+					div.blue 	{ background-color: #25c6da; }
+					div.green 	{ background-color: #6fb589; }
+					div.red		{ background-color: #df4739; }
+
+					div.grey 	{ background-color: #999; }
+					div.ltgrey	{ background-color: #ccc; }
+					div.dkgrey { background-color: #222; }
+					
+					div.white, div.black, div.yellow,
+					div.blue, div.green, div.grey,
+					div.ltgrey, div.dkgrey {
+						display: inline-block; padding: .1vw .5vw .1vw .5vw;
+					}			
+
+
+	.dropcap {
+		color: #25c6da;
+		float: left;
+		font-family: Georgia;
+		font-size: 11vw;
+		line-height: 1;
+		padding-top: 0;
+		padding-right: .15em;
+		padding-left: 0;
+	}
+
+					
+	
+	/* START OF LOG */
+	
+	table#log {
+		width: 100%;
+		border-collapse: separate;
+		line-height: 1.2;
+	}
+	
+	table#log tr.timestamp td:first-child {
+		width: 20%;
+	}
+	
+	table#log tr.description {
+		padding: 0;
+	}
+
+	table#log td {
+		padding: .05em .1em;
+	}
+
+	table#log tr.description td {
+		padding-bottom: .5em;
+	}
+	
+</style>
+</head>
+
+<body class="dark" style="padding: 2em 1.5em;">
+
+	<h2>Privacy Policies</h2><br />
+
+  <b>Aliquam Posuere</b><br />
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus diam odio, tincidunt eget lacinia et, volutpat nec dui. Suspendisse venenatis ante a consectetur semper. </p>
+  
+  <b>Ipsum Factum</b><br />
+  <p>Etiam ut quam quis sem aliquam <a href="">lacinia&nbsp;id</a> quis lacus. Donec justo dolor, finibus quis risus a, luctus sodales mi. Curabitur pharetra justo id mi auctor, eu lobortis eros pulvinar. Quisque ac fringilla dui. Donec pharetra nulla sit amet condimentum volutpat. Quisque at accumsan elit, et aliquet eros. Ut lobortis hendrerit imperdiet.</p>
+  
+  <b>Aenean ut Neque Varius</b><br />
+  <p>Fusce sem felis, lacinia ut facilisis fringilla, congue ut nibh. Vestibulum vitae lectus ipsum. Nullam sed facilisis lorem, non congue neque.</p>
+  <p>Aliquam erat volutpat. Nulla vitae lacinia nisl. <a href="">Aliquam posuere mauris mi, id ultrices ex placerat eu</a>. Vivamus quis tincidunt dui, in blandit nisi. Nam sed elit non neque aliquam sodales sit amet a arcu. Cras rhoncus metus sed leo euismod aliquam. Cras blandit convallis nisl vitae ornare. Vestibulum non dui in nisi faucibus volutpat. Nam sodales malesuada mi, at condimentum enim dictum id. Curabitur suscipit mollis felis, vel laoreet ex. Cras tortor urna, sagittis in mauris vel, tristique molestie ligula.</p>
+  <p>Quisque euismod ligula diam, at euismod nisl pretium et. Aenean ut neque varius, ullamcorper nisl non, interdum ex. Donec et sapien metus. Sed lobortis mattis tempor. Pellentesque erat ipsum, vehicula sit amet feugiat vel, viverra vel ante. Cras tincidunt odio ac dolor maximus, vel elementum magna semper. Nam pulvinar ullamcorper vulputate.</p>
+</body>
+</html>
