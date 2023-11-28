@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 import '../widgets/Drawer_Widget.dart';
+import '../classes/Story.dart';
 
 class Title_Page extends StatelessWidget {
   const Title_Page({super.key});
 
   //  (this page) variables
   static const String _filename = 'Title_Page.dart';  
-  static const String _story_title = 'The Long and Winding Road';  
 
   // (this page) methods
   void _buildTriggered() {
@@ -47,13 +47,13 @@ class Title_Page extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50,0,40,0),
                     child: Text( 
-                      _story_title, 
+                      Story.title, 
                       textAlign: TextAlign.center,
                       style: TextStyle( fontFamily: 'Headline1', fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black )),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50,30,40,50),
-                    child: Text( 'by Matt Garvin'),
+                    child: Text(  Story.author ),
                   ),
                   ElevatedButton(
                     child: Text('begin'),

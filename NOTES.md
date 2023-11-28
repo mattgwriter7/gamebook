@@ -10,11 +10,15 @@ This is a place for stuff that doesn't fit under README
    + but there should only be 1 or 2 "really important" variables in an app
 
 ## LEFT OFF
-Basic Pages are in place
+Story JSON fetched!!
 
 ## NEXT 
-* add error page (to put over Fetches, both story and passage)
-  + to get popped off
+* link NOTES from README
+* add error page (for failed Story fetch, or BAD CONN)
+NEXT IS A BIGGIE:
+* do next fetch for Passage
+  + needs Passage_Model
+  + Passage also fetched on Start_Page (so it is ready)
 
 ## PAGES
 Start_Page
@@ -38,3 +42,6 @@ FETCH STORY
   + image
 * "begin" button always uses "START" as fetch key
 
+
+## RESOURCES
+https://javiercbk.github.io/json_to_dart/

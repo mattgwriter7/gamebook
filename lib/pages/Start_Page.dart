@@ -1,10 +1,15 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import '../classes/Conn.dart';
+import '../models/Story_Model.dart';
 import '../widgets/Drawer_Widget.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
 import '../classes/Passage.dart';
+import '../classes/Story.dart';
 
 class Start_Page extends StatefulWidget {
   const Start_Page({ super.key });
@@ -46,13 +51,37 @@ class _Start_PageState extends State<Start_Page> {
     Utils.log( filename, ' _buildTriggered()');
   }
 
-  void fetchStory() {
+  void fetchStory() async {
     //  WILLFIX: this fake fetch needs to be replaced by a real one
     Passage.fakeFill();
 
-    Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
-      Navigator.of(context).pushNamed('Title_Page');
-    }); 
+    //  <<< START OF TRY FETCH >>>
+    bool flag = await Conn.fetch( 'story.json' );
+    if ( !flag ) {
+      Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
+      //  WILLFIX: do something with this CONN error
+    } 
+    else {
+      Utils.log( filename, '<<< GOOD CONN! >>>' );
+      // fetch worked, so decode the JSON payload
+      Story_Model json = Story_Model.fromJson(jsonDecode( Conn.payload ));      
+
+      if ( json.author!.isEmpty) {
+        //  WILLFIX: do something with error (no author node returned)
+      }
+      else {
+        Story.title = json.title!;
+        Story.author = json.author!;
+        Story.url = json.url!;
+        //  Fetch successfull, so redirect!
+        Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
+          Navigator.of(context).pushNamed('Title_Page');
+        });         
+      }
+
+    }   
+
+
     return;
   }
 

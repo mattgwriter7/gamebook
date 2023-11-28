@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class Config {
   
   static const  String    app_name                  = "gamebook";
-  static const  String    app_version               = "1.0.alpha.3";
+  static const  String    app_version               = "1.0.alpha.4";
   static bool             debug_flag                = false;
   
   //  timeouts and delays
@@ -40,4 +40,5 @@ class Config {
 
   //  CUSTOM STUFF! (from here on this is stuff unique to this App)
 
+  static const String server_address = 'https://panelsplus.net/other/gamebook/';      //  WILLFIX: THIS MUST CHANGE TO CORRECT SERVER!!
 }
