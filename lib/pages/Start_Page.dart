@@ -20,20 +20,18 @@ class _Start_PageState extends State<Start_Page> {
 
   // (this page) variables
   static const String filename = 'Start_Page.dart';
-  static int button_count = -1;
-  List<String> choice_text = [
-    'Morbi malesuada velit vel volutpat egestas',
-    'In hac habitasse platea',
-    'Duis suscipit lorem lorem, sed venenatis metus fringilla vel',
-    'Quisque rhoncus imperdiet orci',
-  ];
-  
+  static bool loading_flag = true;
+  static String story_title = 'Default Story';
+
   // (this page) init and dispose
   @override
   void initState() {
     super.initState();
     Utils.log( filename, 'initState()' );
     WidgetsBinding.instance.addPostFrameCallback((_) => _addPostFrameCallbackTriggered(context));
+
+    //  fetch selected story
+    fetchStory();
   }
 
   @override
@@ -47,70 +45,14 @@ class _Start_PageState extends State<Start_Page> {
     Utils.log( filename, ' _buildTriggered()');
   }
 
-  Container makeButton () {
-    double _padding = 0;
-    button_count++;
-    int index = button_count;
-    if ( button_count == choice_text.length-1 ) {
-      _padding = 200; 
-    } 
-
-    return Container(
-      width: double.infinity,
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(0,0,0,_padding),
-        child: ElevatedButton(
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              choice_text[button_count],
-              style: TextStyle(fontSize: 16),
-              ),
-          ),  
-          style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.fromLTRB(16,12,12,12),
-          ),                        
-          onPressed: () {
-            Utils.log( filename, 'clicked choice #' + index.toString());
-          },
-        ),
-      ),
-    );
+  void fetchStory() {
+    //  WILLFIX: this fake fetch needs to be replaced by a real one
+    Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
+      Navigator.of(context).pushNamed('Title_Page');
+    }); 
+    return;
   }
 
-  Widget passageRow( BuildContext contec, int index) {
-
-    switch ( index ) {
-      case 0: // TITLE
-        return  Container( 
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(25,45,25,40),
-            child: Text('Title', style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
-          ),
-        );
-      case 1: // IMAGE
-        return  SizedBox(height:0);
-      case 2: // DESCRIPTION
-        return  Container( 
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(25,0,25,0),
-            child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-          ),
-        );
-      case 3: // WHAT DO YOU DO?
-        return  Container( 
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(25,30,25,30),
-                      child: Text('What Do You Do?', style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
-          ),
-        );    
-      default:
-        return Padding(
-          padding: const EdgeInsets.fromLTRB(25,5,25,5),
-          child: makeButton(),
-        );
-    }
-  }
 
   void _addPostFrameCallbackTriggered( context ) {
     Utils.log( filename, ' _addPostFrameCallbackTriggered()');
@@ -139,12 +81,61 @@ class _Start_PageState extends State<Start_Page> {
             drawer: Drawer_Widget(),
             body: Container(
               width: double.infinity,
-              child: ListView.builder(
-                      itemCount: 8,
-                      itemBuilder: ( context, index) {
-                        return passageRow(context, index);                      
-                      },
-                    ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 100,
+                    color: Config.debug_flag ? Colors.yellow : Colors.transparent,
+                    child: Center(child: Text('U-CHOOSE', style: TextStyle( fontSize: 32, fontWeight: FontWeight.bold, color: Colors.pink )))),
+                  Container(
+                    height: 50,
+                    color: Config.debug_flag ? Colors.blue : Colors.transparent,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0,0,10,0),
+                          child: SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFFcccccc),
+                              )
+                            ),
+                          ),
+                        ),
+                        SizedBox( width: 2 ),
+                        Text('Loading "$story_title"'),
+                      ],
+                    )), 
+                  Container(
+                    height: 100,
+                    color: Config.debug_flag ? Colors.green : Colors.transparent,
+                    child: Center(
+                      child: Visibility(
+                        visible: !loading_flag,
+                        child: Text('Oops! The story could\nnot be loaded', textAlign: TextAlign.center,)))),                        
+                  Container(
+                    height: 50,
+                    color: Config.debug_flag ? Colors.blue : Colors.transparent,
+                    child: Visibility(
+                      visible: !loading_flag,
+                      child: SizedBox(
+                        width: 120,
+                        height: 40,
+                        child: ElevatedButton(
+                          child: Text('try again'),
+                          onPressed: ()  {
+                      
+                          },
+                          ),
+                      ),
+                    )),                                     
+                ],
+              )
             ),
           ),
         ),

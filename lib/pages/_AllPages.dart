@@ -3,6 +3,10 @@
 //  start and end pages
 export 'Start_Page.dart';
 export 'End_Page.dart';
+//  other pages
+export 'Title_Page.dart';
+export 'Passage_Page.dart';
+export 'Fetch_Page.dart';
 //  dummy pages
 export './dummies/Dummies_Page.dart';
 export './dummies/Dummy1_Page.dart';
