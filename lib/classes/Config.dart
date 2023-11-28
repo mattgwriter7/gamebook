@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class Config {
   
   static const  String    app_name                  = "boilerplate";
-  static const  String    app_version               = "1.0.alpha.1";
+  static const  String    app_version               = "1.0.alpha.2";
   
   //  timeouts and delays
   static int              server_timeout            = 10;     // seconds
