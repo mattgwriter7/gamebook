@@ -58,6 +58,18 @@ class _Start_PageState extends State<Start_Page> {
                         ),
                       );
   }
+
+  Widget _section( BuildContext contec, int index) {
+    if( index == 0 ) {
+      return Text('title');
+    }
+    else 
+    return Padding(
+                          padding: const EdgeInsets.fromLTRB(25,5,25,5),
+                          child: _makeButton('Quisque rhoncus imperdiet orci'),
+                        );
+
+  }
   
   void _addPostFrameCallbackTriggered( context ) {
     Utils.log( filename, ' _addPostFrameCallbackTriggered()');
@@ -84,47 +96,14 @@ class _Start_PageState extends State<Start_Page> {
               foregroundColor: Colors.black,
             ), //AppBar
             drawer: Drawer_Widget(),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container( 
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25,40,25,40),
-                      child: Text('Title', style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold )),
+            body: Container(
+              width: double.infinity,
+              child: ListView.builder(
+                      itemCount: 25,
+                      itemBuilder: ( context, index) {
+                        return _section(context, index);                      
+                      },
                     ),
-                  ),
-                  Container( 
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25,0,25,0),
-                      child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-                    ),
-                  ),                
-                  Container( 
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25,30,25,20),
-                      child: Text('What Do You Do?', style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold )),),
-                  ),   
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25,10,25,5),
-                    child: _makeButton('Morbi malesuada velit vel volutpat egestas'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25,5,25,5),
-                    child: _makeButton('In hac habitasse platea'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25,5,25,5),
-                    child: _makeButton('Duis suscipit lorem lorem, sed venenatis metus fringilla vel'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(25,5,25,5),
-                    child: _makeButton('Quisque rhoncus imperdiet orci'),
-                  ),
-                  SizedBox(
-                    height: 150,
-                  )
-                ],
-              ),
             ),
           ),
         ),
