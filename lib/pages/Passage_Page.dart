@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
+import '../classes/Passage.dart';
 import '../widgets/Drawer_Widget.dart';
 
 class Passage_Page extends StatefulWidget {
@@ -35,12 +36,6 @@ class _Passage_PageState extends State<Passage_Page> {
     //    come from Passage() class (already filled out)
     //    and this page is just for filling the ui
     button_count = -1;
-    choice_text = [
-      'Morbi malesuada velit vel volutpat egestas',
-      'In hac habitasse platea',
-      'Duis suscipit lorem lorem, sed venenatis metus fringilla vel',
-      'Quisque rhoncus imperdiet orci',
-    ];    
   }
 
   @override
@@ -58,7 +53,7 @@ class _Passage_PageState extends State<Passage_Page> {
     double _padding = 0;
     button_count++;
     int index = button_count;
-    if ( button_count == choice_text.length-1 ) {
+    if ( button_count == Passage.choice_text.length-1 ) {
       _padding = 200; 
       //  WILLFIX: the next line is to prevent errors on Hot Reload
       button_count = 0;
@@ -72,7 +67,7 @@ class _Passage_PageState extends State<Passage_Page> {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              choice_text[button_count],
+              Passage.choice_text[button_count],
               style: TextStyle(fontSize: 16),
               ),
           ),  
@@ -80,7 +75,7 @@ class _Passage_PageState extends State<Passage_Page> {
             padding: EdgeInsets.fromLTRB(16,12,12,12),
           ),                        
           onPressed: () {
-            Utils.log( filename, 'clicked choice #' + index.toString());
+            Utils.log( filename, 'clicked choice #' + index.toString() + ' ("${ Passage.choice_key[index] }")');
             Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
               Navigator.of(context).pushReplacementNamed('Fetch_Page');
             });             
@@ -97,19 +92,21 @@ class _Passage_PageState extends State<Passage_Page> {
         return  Container( 
           child: Padding(
             padding: const EdgeInsets.fromLTRB(25,45,25,40),
-            child: Text('Title', style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
+            child: Text( Passage.title, style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
           ),
         );
       case 1: // IMAGE
         return  SizedBox(height:0);
-      case 2: // DESCRIPTION
+      case 2: // CAPTION
+        return  SizedBox(height:0);        
+      case 3: // DESCRIPTION
         return  Container( 
           child: Padding(
             padding: const EdgeInsets.fromLTRB(25,0,25,0),
-            child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+            child: Text( Passage.description ),
           ),
         );
-      case 3: // WHAT DO YOU DO?
+      case 4: // WHAT DO YOU DO?
         return  Container( 
           child: Padding(
             padding: const EdgeInsets.fromLTRB(25,30,25,30),
@@ -152,7 +149,7 @@ class _Passage_PageState extends State<Passage_Page> {
             body: Container(
               width: double.infinity,
               child: ListView.builder(
-                      itemCount: 8,
+                      itemCount: (5+Passage.choice_text.length),
                       itemBuilder: ( context, index) {
                         return passageRow(context, index);                      
                       },

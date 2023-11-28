@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
+import '../widgets/Drawer_Widget.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
-import '../widgets/Drawer_Widget.dart';
+import '../classes/Passage.dart';
 
 class Start_Page extends StatefulWidget {
   const Start_Page({ super.key });
@@ -47,6 +48,8 @@ class _Start_PageState extends State<Start_Page> {
 
   void fetchStory() {
     //  WILLFIX: this fake fetch needs to be replaced by a real one
+    Passage.fakeFill();
+
     Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
       Navigator.of(context).pushNamed('Title_Page');
     }); 

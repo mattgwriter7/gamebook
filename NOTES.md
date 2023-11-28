@@ -30,16 +30,11 @@ This is meat of the page where passages are displayed.
 Fetch_Page
 It fetches a passage
 
-## CONSIDERATIONS
-* what to do when choice is made? 
-  + fullscreen spinner?
-  + "fetching passage" in AppBar?
-* should I have ItemBuilder always be:
-  + 0 is title
-  + 1 is image (if not image use SizedBox with 0 height)
-  + 2 is image caption (null is 0 height)
-  + 3 is "Pompt" (if none use default)
-  + then... add the number of choices to the mix
-* Make Choice class
-  + String text
-  + String key
+## IDEAS
+FETCH STORY
+* returns JSON
+  + title
+  + author
+  + image
+* "begin" button always uses "START" as fetch key
+
