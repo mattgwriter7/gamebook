@@ -22,17 +22,17 @@ NEXT IS A BIGGIE:
 
 ## PAGES
 Start_Page
-This page accepts keys.  Those keys are used to fetch stories.
-By default, the Default Story is used.
+* This page accepts keys.  Those keys are used to fetch stories.
+* By default, the Default Story is used.
 
 Title_Page
-Simple stateless page just for showing Title and Author
+* Simple stateless page just for showing Title and Author
 
 Passage_Page
-This is meat of the page where passages are displayed.
+* This is meat of the page where passages are displayed.
 
 Fetch_Page
-It fetches a passage
+* It fetches a Passage
 
 ## IDEAS
 FETCH STORY
