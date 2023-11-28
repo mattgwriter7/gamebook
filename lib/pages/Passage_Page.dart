@@ -67,7 +67,7 @@ class _Passage_PageState extends State<Passage_Page> {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              Passage.choice_text[button_count],
+              Passage.choice_text[index],
               style: TextStyle(fontSize: 16),
               ),
           ),  

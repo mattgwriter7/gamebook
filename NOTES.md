@@ -10,15 +10,16 @@ This is a place for stuff that doesn't fit under README
    + but there should only be 1 or 2 "really important" variables in an app
 
 ## LEFT OFF
-* Story JSON fetched!!
+* made json2c (but did not add any code)
+* Passage story JSON fetched now, too!!
 
 ## NEXT 
-* link NOTES from README
+* add fetch Passage to Fetch_Page
+* add a few more pages (beyond START.json)
 * add error page (for failed Story fetch, or BAD CONN)   
-NEXT IS A BIGGIE:
-* do next fetch for Passage
-  + needs Passage_Model
-  + Passage also fetched on Start_Page (so it is ready)
+ISSUE   
+The Fetch Passage is in 2 places
+  + should I add provider, or some other way to refactor code?
 
 ## PAGES
 Start_Page

@@ -32,16 +32,19 @@ class Passage_Model {
 
 class Choices {
   String? text;
+  String? key;
 
-  Choices({this.text});
+  Choices({this.text, this.key});
 
   Choices.fromJson(Map<String, dynamic> json) {
     text = json['text'];
+    key = json['key'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['text'] = this.text;
+    data['key'] = this.key;
     return data;
   }
 }

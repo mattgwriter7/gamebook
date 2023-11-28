@@ -53,8 +53,6 @@ class _Start_PageState extends State<Start_Page> {
   }
 
   void fetchStory() async {
-    //  WILLFIX: this fake fetch needs to be replaced by a real one
-    Passage.fakeFill();
 
     //  <<< START OF TRY FETCH >>>
     bool flag = await Conn.fetch( 'story.json' );
@@ -97,6 +95,19 @@ class _Start_PageState extends State<Start_Page> {
         //  WILLFIX: do something with error (no author node returned)
       }
       else {    
+        Passage.title = json.title!;
+        Passage.description = json.description!;
+         
+         // empty choices
+         Passage.clearChoices();
+         
+         // loop choices
+        int choice_max = json.choices!.length;
+        for ( int i = 0; i < choice_max; i++ ) {
+          Passage.addChoice( json.choices![i].text!, json.choices![i].key!);
+          Utils.log ( filename, i.toString() + '. ' + json.choices![i].text! );
+        }
+
         //  Fetches successfull, so redirect!
         Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
           Navigator.of(context).pushNamed('Title_Page');
