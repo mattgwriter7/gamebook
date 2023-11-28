@@ -19,9 +19,31 @@ class MyApp extends StatelessWidget {
     Utils.log( filename, '== init "${ Config.app_name }" version ${ Config.app_version } ==' );
 
     return MaterialApp(
-      title: 'Daily Fortune',
+      title: 'Gamebook',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          bodyText2: TextStyle( color: Config.main_font_color, fontSize: Config.main_font_size ),
+        ), 
+        appBarTheme: AppBarTheme(
+          backgroundColor: Config.appbar_background,
+          foregroundColor: Config.appbar_foreground,
+          iconTheme: const IconThemeData(color: Color(0xFFffffff)),
+          titleTextStyle: const TextStyle(
+            height: 1,
+            fontSize: 18,
+          ),
+        ),
+        cardTheme: const CardTheme(
+          color: Color(0xFF222222),
+        ), 
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor:
+                MaterialStateProperty.all<Color>( Config.button_background_color ),
+              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.fromLTRB(10,10,10,10)),
+            ),
+          ),
       ),
       initialRoute: 'Start_Page',
       //  initialRoute: 'Dummies_Page',
