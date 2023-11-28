@@ -10,9 +10,25 @@ This is a place for stuff that doesn't fit under README
    + but there should only be 1 or 2 "really important" variables in an app
 
 ## LEFT OFF
-I have the basic UI started. I am not sure how to handle when there are UI elements that are not used (like images, image captions, etc.)
+Basic Pages are in place
+
 ## NEXT 
-* ?
+* add error page (to put over Fetches, both story and passage)
+  + to get popped off
+
+## PAGES
+Start_Page
+This page accepts keys.  Those keys are used to fetch stories.
+By default, the Default Story is used.
+
+Title_Page
+Simple stateless page just for showing Title and Author
+
+Passage_Page
+This is meat of the page where passages are displayed.
+
+Fetch_Page
+It fetches a passage
 
 ## CONSIDERATIONS
 * what to do when choice is made? 

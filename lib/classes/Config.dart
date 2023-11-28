@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 
 class Config {
   
-  static const  String    app_name                  = "boilerplate";
-  static const  String    app_version               = "1.0.alpha.2";
+  static const  String    app_name                  = "gamebook";
+  static const  String    app_version               = "1.0.alpha.3";
+  static bool             debug_flag                = false;
   
   //  timeouts and delays
   static int              server_timeout            = 10;     // seconds
