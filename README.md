@@ -10,4 +10,4 @@ The goal is to have a Flutter App that accepts a "story code" (4-8 characters, l
 Stories will be completed passage-by-passage as a user makes a choice from the preceding passage.  Each choice will have a "passage code" which will fetch the corresponding passage using JSON. 
 
 ## NOTES
-See NOTES.md for more detailed notes, including where I am at with this project, and future plans.
+See [NOTES](https://github.com/mattgwriter7/gamebook/blob/main/NOTES.md)  for more detailed notes, including where I am at with this project, and future plans.

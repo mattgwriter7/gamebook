@@ -10,11 +10,11 @@ This is a place for stuff that doesn't fit under README
    + but there should only be 1 or 2 "really important" variables in an app
 
 ## LEFT OFF
-Story JSON fetched!!
+* Story JSON fetched!!
 
 ## NEXT 
 * link NOTES from README
-* add error page (for failed Story fetch, or BAD CONN)
+* add error page (for failed Story fetch, or BAD CONN)   
 NEXT IS A BIGGIE:
 * do next fetch for Passage
   + needs Passage_Model
