@@ -53,7 +53,7 @@ class Title_Page extends StatelessWidget {
                   ),
                   Container(
                     height: 240,
-                    child: Image.network( 'https://panelsplus.net//other/gamebook/8888-9999/images/book_cover.png' ), //  WILLFIX
+                    child: Image.network( 'https://panelsplus.net//other/gamebook/8888-9999/assets/book_cover.png' ), //  WILLFIX
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50,10,40,40),
@@ -62,7 +62,7 @@ class Title_Page extends StatelessWidget {
                   ElevatedButton(
                     child: Text('begin'),
                     onPressed: () {
-                      Config.last_fetced_file = 'START';
+                      Config.passage_key = 'START';
                       Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
                         Navigator.of(context).pushNamed('Fetch_Page');
                       }); 

@@ -80,10 +80,10 @@ class _Passage_PageState extends State<Passage_Page> {
           onPressed: () {
             Utils.log( filename, 'clicked choice #' + index.toString() + ' ("${ Passage.choice_key[index] }")');
             //  <<< THIS IS WHERE NEXT JSON FILE IS SET >>>
-            Config.last_fetced_file = Passage.choice_key[index];
+            Config.passage_key = Passage.choice_key[index];
             Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
               //  RESTART ?
-              if ( Config.last_fetced_file == 'RESTART') { 
+              if ( Config.passage_key == 'RESTART') { 
                 //  Navigator.of(context).pushReplacementNamed('Title_Page'); 
                 Navigator.of(context).popUntil(ModalRoute.withName('Title_Page')); 
               }              

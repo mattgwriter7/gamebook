@@ -87,7 +87,7 @@ class _Start_PageState extends State<Start_Page> {
   //  WILLFIX: REFACTORING NEEDED!
   //  This method same as fetchPassage() in Fetch_Page.dart
   void fetchPassage() async {
-    bool flag = await Conn.fetch( Story.key + '/${ Config.last_fetced_file }.json' );
+    bool flag = await Conn.fetch( Story.key + '/${ Config.passage_key }.json' );
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error

@@ -21,6 +21,7 @@ class _Fetch_PageState extends State<Fetch_Page> {
 
   // (this page) variables
   static const String filename = 'Fetch_Page.dart';
+  static String spinner_message = '';
   
   // (this page) init and dispose
   @override
@@ -29,6 +30,9 @@ class _Fetch_PageState extends State<Fetch_Page> {
     Utils.log( filename, 'initState()' );
     WidgetsBinding.instance.addPostFrameCallback((_) => _addPostFrameCallbackTriggered(context));  
 
+    //  use which spinner message?
+    spinner_message = 'Fetching passage...';
+    if ( Config.passage_key == 'START' ) spinner_message  = 'The story begins...'; 
     //  fetch selected passage
     fetchPassage();    
   }
@@ -44,18 +48,9 @@ class _Fetch_PageState extends State<Fetch_Page> {
     Utils.log( filename, '_buildTriggered()');
   }
 
-  void fetchPassage2() {
-    //  WILLFIX: this fake fetch needs to be replaced by a real one
-    Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
-      Navigator.of(context).pushReplacementNamed('Passage_Page');
-    }); 
-    return;
-  }
-
-  //  WILLFIX: REFACTORING NEEDED!
-  //  This method same as fetchPassage() in Start_Page.dart
+  //  <<< THIS IS THE MEAT OF THE APP: FETCHING PASSAGES, ONE-BY-ONE >>>
   void fetchPassage() async {
-    bool flag = await Conn.fetch( Story.key + '/${ Config.last_fetced_file }.json' );
+    bool flag = await Conn.fetch( Story.key + '/${ Config.passage_key }.json' );
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error
@@ -66,7 +61,7 @@ class _Fetch_PageState extends State<Fetch_Page> {
       Passage_Model json = Passage_Model.fromJson(jsonDecode( Conn.payload ));      
 
       if ( json.key!.isEmpty) {
-        //  WILLFIX: do something with error (no author node returned)
+        //  WILLFIX: do something with error (no key node returned)
       }
       else {    
         Passage.title = json.title!;
@@ -128,7 +123,7 @@ class _Fetch_PageState extends State<Fetch_Page> {
                       ),
                     ),
                   ),
-                  Text('Fetching passage...'),
+                  Text( spinner_message ),
                 ],
               ),
             ),
