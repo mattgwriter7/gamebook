@@ -65,6 +65,8 @@ class _Fetch_PageState extends State<Fetch_Page> {
       }
       else {    
         Passage.title = json.title!;
+        Passage.image = json.image!;
+        Passage.caption = json.caption!;
         Passage.description = json.description!;
          
          // empty choices
