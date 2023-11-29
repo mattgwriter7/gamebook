@@ -50,19 +50,14 @@ class _Passage_PageState extends State<Passage_Page> {
   }
 
   Container makeButton () {
-    double _padding = 0;
     button_count++;
     int index = button_count;
-    if ( button_count == Passage.choice_text.length-1 ) {
-      _padding = 200; 
-      //  WILLFIX: the next line is to prevent errors on Hot Reload
-      button_count = 0;
-    } 
-
+    double _padme = 0; 
+    if ( index == Passage.choice_text.length-1 ) _padme = 100;
     return Container(
       width: double.infinity,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(0,0,0,_padding),
+        padding: EdgeInsets.fromLTRB(0,0,0,_padme),
         child: ElevatedButton(
           child: Align(
             alignment: Alignment.centerLeft,
@@ -72,7 +67,7 @@ class _Passage_PageState extends State<Passage_Page> {
               ),
           ),  
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.fromLTRB(16,12,12,12),
+            padding: EdgeInsets.fromLTRB(16,12,12, 12 ),
           ),                        
           onPressed: () {
             Utils.log( filename, 'clicked choice #' + index.toString() + ' ("${ Passage.choice_key[index] }")');
@@ -94,7 +89,7 @@ class _Passage_PageState extends State<Passage_Page> {
     );
   }
 
-  Widget passageRow( BuildContext contec, int index) {
+  Widget passageRow( BuildContext context, int index) {
 
     double _image_bottom = 25;    //  this is how much padding is needed for images, which
                                   //  is different when there is a caption!
@@ -112,10 +107,10 @@ class _Passage_PageState extends State<Passage_Page> {
     //  is there an image?  
     SizedBox img_box = SizedBox(height:0);
     if( Passage.image != '') {
-      img_box = SizedBox( width: double.infinity, child: Padding(
+      img_box = SizedBox( height: 250, child: Padding(
         padding: EdgeInsets.fromLTRB(25,0,25,_image_bottom),
         child: Image.network( '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png', 
-          fit: BoxFit.contain,
+          fit: BoxFit.fitHeight,
         ),
       ));
     }
@@ -160,6 +155,15 @@ class _Passage_PageState extends State<Passage_Page> {
     }
   }
 
+  Widget fullyBuiltPassage() {
+    int index_max = 5+Passage.choice_text.length;
+    return Column(
+      children: List<Widget>.generate( index_max, (index) {
+        return passageRow( context, index );
+      })
+    );
+  }
+
   void _addPostFrameCallbackTriggered( context ) {
     Utils.log( filename, ' _addPostFrameCallbackTriggered()');
   }
@@ -187,12 +191,7 @@ class _Passage_PageState extends State<Passage_Page> {
             drawer: Drawer_Widget(),
             body: Container(
               width: double.infinity,
-              child: ListView.builder(
-                      itemCount: (5+Passage.choice_text.length),
-                      itemBuilder: ( context, index) {
-                        return passageRow(context, index);                      
-                      },
-                    ),
+              child: SingleChildScrollView(child: fullyBuiltPassage()),
             ),
           ),
         ),
