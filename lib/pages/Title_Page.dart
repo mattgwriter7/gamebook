@@ -58,8 +58,9 @@ class Title_Page extends StatelessWidget {
                   ElevatedButton(
                     child: Text('begin'),
                     onPressed: () {
+                      Config.last_fetced_file = 'START';
                       Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-                        Navigator.of(context).pushNamed('Passage_Page');
+                        Navigator.of(context).pushNamed('Fetch_Page');
                       }); 
                     },
                   )

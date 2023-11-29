@@ -5,5 +5,6 @@ class Story {
   static String title = '';                         //  0
   static String author = '';                         //  1
   static String url  = '';
+  static String key  = '';
 
 }

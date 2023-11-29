@@ -2,6 +2,7 @@ class Story_Model {
   String? title;
   String? author;
   String? url;
+  String? key;
 
   Story_Model({this.title, this.author, this.url});
 
@@ -9,6 +10,7 @@ class Story_Model {
     title = json['title'];
     author = json['author'];
     url = json['url'];
+    key = json['key'];
   }
 
   Map<String, dynamic> toJson() {
@@ -16,6 +18,7 @@ class Story_Model {
     data['title'] = this.title;
     data['author'] = this.author;
     data['url'] = this.url;
+    data['key'] = this.key;
     return data;
   }
 }

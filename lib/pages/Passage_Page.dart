@@ -36,6 +36,9 @@ class _Passage_PageState extends State<Passage_Page> {
     //    come from Passage() class (already filled out)
     //    and this page is just for filling the ui
     button_count = -1;
+    setState(() {
+      
+    });
   }
 
   @override
@@ -67,7 +70,7 @@ class _Passage_PageState extends State<Passage_Page> {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              Passage.choice_text[button_count],
+              Passage.choice_text[index],
               style: TextStyle(fontSize: 16),
               ),
           ),  
@@ -76,8 +79,17 @@ class _Passage_PageState extends State<Passage_Page> {
           ),                        
           onPressed: () {
             Utils.log( filename, 'clicked choice #' + index.toString() + ' ("${ Passage.choice_key[index] }")');
+            //  <<< THIS IS WHERE NEXT JSON FILE IS SET >>>
+            Config.last_fetced_file = Passage.choice_key[index];
             Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-              Navigator.of(context).pushReplacementNamed('Fetch_Page');
+              //  RESTART ?
+              if ( Config.last_fetced_file == 'RESTART') { 
+                //  Navigator.of(context).pushReplacementNamed('Title_Page'); 
+                Navigator.of(context).popUntil(ModalRoute.withName('Title_Page')); 
+              }              
+              else {
+                Navigator.of(context).pushReplacementNamed('Fetch_Page');
+              }
             });             
           },
         ),
@@ -133,7 +145,7 @@ class _Passage_PageState extends State<Passage_Page> {
 
     return WillPopScope(
       onWillPop: () async {
-        return true;  //  this allows the back button to work
+        return false;  //  this allows the back button to work
       },
       child: SafeArea(
           child: Scaffold(
