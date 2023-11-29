@@ -28,7 +28,8 @@ class _Start_PageState extends State<Start_Page> {
   // (this page) variables
   static const String filename = 'Start_Page.dart';
   static bool loading_flag = true;
-  static String story_title = 'Default Story';
+  static String fail_mssg = 'Oops! The story could\nnot be loaded';
+  static int fail_count = 0;
 
   // (this page) init and dispose
   @override
@@ -37,7 +38,11 @@ class _Start_PageState extends State<Start_Page> {
     Utils.log( filename, 'initState()' );
     WidgetsBinding.instance.addPostFrameCallback((_) => _addPostFrameCallbackTriggered(context));
 
-    //  fetch selected story
+    //  if there is no story key, set it to DEFAULT
+    if ( Config.story_key == '' ) {
+      Config.story_key = 'DEFAULT';
+    }
+    //  now fetch the story
     fetchStory();
   }
 
@@ -59,6 +64,14 @@ class _Start_PageState extends State<Start_Page> {
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error
+      Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
+        fail_count++;
+        setState(() {
+          loading_flag = false;
+          if( fail_count > 4 ) { fail_mssg = 'Should you try a different\nstory key?'; return; }
+          if( fail_count > 2 ) { fail_mssg = 'Is your network\nconnected?'; return; }
+        });  
+      });       
     } 
     else {
       Utils.log( filename, '<<< GOOD CONN! >>>' );
@@ -73,8 +86,7 @@ class _Start_PageState extends State<Start_Page> {
         Story.author = json.author!;
         Story.url = json.url!;
         Story.key = json.key!;
-        //  Story fetches successfull, now do Passage
-        //  fetchPassage();   
+
         //  Fetches successfull, so redirect!
         Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
           Navigator.of(context).pushNamed('Title_Page');
@@ -83,46 +95,6 @@ class _Start_PageState extends State<Start_Page> {
     }   
     return;
   }
-
-  //  WILLFIX: REFACTORING NEEDED!
-  //  This method same as fetchPassage() in Fetch_Page.dart
-  void fetchPassage() async {
-    bool flag = await Conn.fetch( Story.key + '/${ Config.passage_key }.json' );
-    if ( !flag ) {
-      Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
-      //  WILLFIX: do something with this CONN error
-    } 
-    else {
-      Utils.log( filename, '<<< GOOD CONN! >>>' );
-      // fetch worked, so decode the JSON payload
-      Passage_Model json = Passage_Model.fromJson(jsonDecode( Conn.payload ));      
-
-      if ( json.key!.isEmpty) {
-        //  WILLFIX: do something with error (no author node returned)
-      }
-      else {    
-        Passage.title = json.title!;
-        Passage.description = json.description!;
-         
-         // empty choices
-         Passage.clearChoices();
-         
-         // loop choices
-        int choice_max = json.choices!.length;
-        for ( int i = 0; i < choice_max; i++ ) {
-          Passage.addChoice( json.choices![i].text!, json.choices![i].key!);
-          Utils.log ( filename, i.toString() + '. ' + json.choices![i].text! );
-        }
-
-        //  Fetches successfull, so redirect!
-        Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
-          Navigator.of(context).pushNamed('Title_Page');
-        });    
-      }
-    }  
-    return;
-  }
-
 
   void _addPostFrameCallbackTriggered( context ) {
     Utils.log( filename, ' _addPostFrameCallbackTriggered()');
@@ -155,14 +127,17 @@ class _Start_PageState extends State<Start_Page> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 200,
-                    color: Config.debug_flag ? Colors.yellow : Colors.transparent,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,20,0,0),
                     child: Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/logo_square.png"),
-                          fit: BoxFit.contain,
+                      height: 120,
+                      color: Config.debug_flag ? Colors.yellow : Colors.transparent,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/logo_square.png"),
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                     ),
@@ -173,48 +148,73 @@ class _Start_PageState extends State<Start_Page> {
                   Container(
                     height: 50,
                     color: Config.debug_flag ? Colors.blue : Colors.transparent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0,0,6,0),
-                          child: SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                Colors.pink,
-                              )
+                    child: 
+                      loading_flag  ?
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0,0,6,0),
+                              child: SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.pink,
+                                  )
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        SizedBox( width: 2 ),
-                        Text('Loading "$story_title"', style: TextStyle( fontSize: 18)),
-                      ],
-                    )), 
+                            SizedBox( width: 2 ),
+                            Text('Loading "${ Config.story_key }"', style: TextStyle( fontSize: 18)),
+                          ],
+                        )
+                      : 
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0,0,6,0),
+                              child: SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Icon(
+                                  Icons.error,
+                                  size: 20,
+                                  color: Colors.pink,
+                                ),
+                              ),
+                            ),
+                            SizedBox( width: 2 ),
+                            Text('Key "${ Config.story_key }" failed', style: TextStyle( fontSize: 18)),
+                          ],
+                        )                   
+                  ),  
                   Container(
                     height: 100,
                     color: Config.debug_flag ? Colors.green : Colors.transparent,
                     child: Center(
                       child: Visibility(
                         visible: !loading_flag,
-                        child: Text('Oops! The story could\nnot be loaded', textAlign: TextAlign.center,)))),                        
-                  Container(
-                    height: 50,
-                    color: Config.debug_flag ? Colors.blue : Colors.transparent,
-                    child: Visibility(
-                      visible: !loading_flag,
-                      child: SizedBox(
-                        width: 120,
-                        height: 40,
-                        child: ElevatedButton(
-                          child: Text('try again'),
-                          onPressed: ()  {
-                      
-                          },
+                        child: Text( fail_mssg, textAlign: TextAlign.center,)))),                        
+                    Container(
+                      height: 56,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Visibility(
+                          visible: !loading_flag,
+                          child: ElevatedButton(
+                            child: Text('try again'),
+                            onPressed: ()  {
+                              setState(() {
+                                loading_flag = true;
+                              });
+                              fetchStory();
+                            },
                           ),
+                        ),
                       ),
-                    )),                                     
+                    )                                    
                 ],
               )
             ),

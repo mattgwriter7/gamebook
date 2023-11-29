@@ -23,7 +23,6 @@ class _Passage_PageState extends State<Passage_Page> {
   // (this page) variables
   static const String filename = 'Passage_Page.dart';
   static int button_count = -1;
-  List<String> choice_text = [];
   
   // (this page) init and dispose
   @override
@@ -37,9 +36,6 @@ class _Passage_PageState extends State<Passage_Page> {
     //    come from Passage() class (already filled out)
     //    and this page is just for filling the ui
     button_count = -1;
-    setState(() {
-      
-    });
   }
 
   @override
