@@ -45,14 +45,18 @@ class Title_Page extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50,0,40,0),
+                    padding: const EdgeInsets.fromLTRB(50,0,40,10),
                     child: Text( 
                       Story.title, 
                       textAlign: TextAlign.center,
                       style: TextStyle( fontFamily: 'Headline1', fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black )),
                   ),
+                  Container(
+                    height: 240,
+                    child: Image.network( 'https://panelsplus.net//other/gamebook/8888-9999/images/book_cover.png' ), //  WILLFIX
+                  ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50,30,40,50),
+                    padding: const EdgeInsets.fromLTRB(50,10,40,40),
                     child: Text(  Story.author ),
                   ),
                   ElevatedButton(

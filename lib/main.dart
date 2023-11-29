@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Gamebook',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Config.main_background_color,
         textTheme: TextTheme(
           bodyText2: TextStyle( color: Config.main_font_color, fontSize: Config.main_font_size ),
         ), 
