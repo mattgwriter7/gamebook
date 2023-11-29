@@ -10,16 +10,19 @@ This is a place for stuff that doesn't fit under README
    + but there should only be 1 or 2 "really important" variables in an app
 
 ## LEFT OFF
-* made json2c (but did not add any code)
-* Passage story JSON fetched now, too!!
+* passages being fetched correctly
 
 ## NEXT 
-* add fetch Passage to Fetch_Page
-* add a few more pages (beyond START.json)
-* add error page (for failed Story fetch, or BAD CONN)   
-ISSUE   
-The Fetch Passage is in 2 places
-  + should I add provider, or some other way to refactor code?
+* Refactor 
+  + remove The Fetch Passage in Start
+* Clean and comment code better
+  + including this NOTES section
+  + especially "RESTART" note
+* Add error messages and logic
+  + and 404 errors when passage fails  
+
+## FUTURE IDEAS
+* on click disable second button clicks
 
 ## PAGES
 Start_Page
@@ -43,6 +46,15 @@ FETCH STORY
   + image
 * "begin" button always uses "START" as fetch key
 
+## ANDROIDMANIFEST.XML PERMISSIONS
+To get internet fetches working, added:
+<uses-permission android:name="android.permission.INTERNET"/>
 
 ## RESOURCES
 https://javiercbk.github.io/json_to_dart/
+
+## FAQ   
+What json filea are required?
+* START.json
+* END.json
+* OOPS.json

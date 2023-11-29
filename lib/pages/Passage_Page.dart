@@ -145,7 +145,7 @@ class _Passage_PageState extends State<Passage_Page> {
 
     return WillPopScope(
       onWillPop: () async {
-        return true;  //  this allows the back button to work
+        return false;  //  this allows the back button to work
       },
       child: SafeArea(
           child: Scaffold(
