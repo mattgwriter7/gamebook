@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
+import '../classes/Story.dart';
 import '../classes/Passage.dart';
 import '../widgets/Drawer_Widget.dart';
 
@@ -99,6 +100,31 @@ class _Passage_PageState extends State<Passage_Page> {
 
   Widget passageRow( BuildContext contec, int index) {
 
+    double _image_bottom = 25;    //  this is how much padding is needed for images, which
+                                  //  is different when there is a caption!
+
+    //  is there a caption (for image)?  
+    SizedBox caption_box = SizedBox(height:0);
+    if( Passage.caption != '') {
+      _image_bottom = 5;
+      caption_box = SizedBox( width: double.infinity, child: Padding(
+        padding: EdgeInsets.fromLTRB(25,0,25,25),
+        child: Text( Passage.caption, style: TextStyle( fontStyle: FontStyle.italic, fontSize: 14 ), textAlign: TextAlign.center, ),
+      ));
+    }
+
+    //  is there an image?  
+    SizedBox img_box = SizedBox(height:0);
+    if( Passage.image != '') {
+      img_box = SizedBox( width: double.infinity, child: Padding(
+        padding: EdgeInsets.fromLTRB(25,0,25,_image_bottom),
+        child: Image.network( '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png', 
+          fit: BoxFit.contain,
+        ),
+      ));
+    }
+
+
     switch ( index ) {
       case 0: // TITLE
         return  Container( 
@@ -108,9 +134,9 @@ class _Passage_PageState extends State<Passage_Page> {
           ),
         );
       case 1: // IMAGE
-        return  SizedBox(height:0);
+        return  img_box;
       case 2: // CAPTION
-        return  SizedBox(height:0);        
+        return  caption_box;        
       case 3: // DESCRIPTION
         return  Container( 
           child: Padding(
@@ -121,8 +147,13 @@ class _Passage_PageState extends State<Passage_Page> {
       case 4: // WHAT DO YOU DO?
         return  Container( 
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(25,30,25,30),
-                      child: Text('What Do You Do?', style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
+            padding: EdgeInsets.fromLTRB(25,30,25,30),
+              child: GestureDetector(
+                //  for debugging, a long press will reload this passage
+                onLongPress: () { 
+                  Navigator.of(context).pushReplacementNamed('Fetch_Page');  
+                },
+                child: Text('What Do You Do?', style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,)),
           ),
         );    
       default:

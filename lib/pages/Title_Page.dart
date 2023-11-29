@@ -53,7 +53,7 @@ class Title_Page extends StatelessWidget {
                   ),
                   Container(
                     height: 240,
-                    child: Image.network( 'https://panelsplus.net//other/gamebook/8888-9999/assets/book_cover.png' ), //  WILLFIX
+                    child: Image.network( '${ Config.server_address }${ Story.key }/assets/book_cover.png',)  //  this image is always called "book_cover.png"
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50,10,40,40),

@@ -1,14 +1,18 @@
 class Passage_Model {
   String? key;
   String? title;
+  String? image;
+  String? caption;
   String? description;
   List<Choices>? choices;
 
-  Passage_Model({this.key, this.title, this.description, this.choices});
+  Passage_Model({this.key, this.title, this.image, this.caption, this.description, this.choices});
 
   Passage_Model.fromJson(Map<String, dynamic> json) {
     key = json['key'];
     title = json['title'];
+    image = json['image'];
+    caption = json['caption'];
     description = json['description'];
     if (json['choices'] != null) {
       choices = <Choices>[];
@@ -22,6 +26,8 @@ class Passage_Model {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['key'] = this.key;
     data['title'] = this.title;
+    data['image'] = this.image;
+    data['caption'] = this.caption;
     data['description'] = this.description;
     if (this.choices != null) {
       data['choices'] = this.choices!.map((v) => v.toJson()).toList();
