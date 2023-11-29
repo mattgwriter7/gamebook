@@ -74,14 +74,20 @@ class _Start_PageState extends State<Start_Page> {
         Story.url = json.url!;
         Story.key = json.key!;
         //  Story fetches successfull, now do Passage
-        fetchPassage();   
+        //  fetchPassage();   
+        //  Fetches successfull, so redirect!
+        Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
+          Navigator.of(context).pushNamed('Title_Page');
+        });            
       }
     }   
     return;
   }
 
+  //  WILLFIX: REFACTORING NEEDED!
+  //  This method same as fetchPassage() in Fetch_Page.dart
   void fetchPassage() async {
-    bool flag = await Conn.fetch( Story.key + '/START.json' );
+    bool flag = await Conn.fetch( Story.key + '/${ Config.last_fetced_file }.json' );
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error

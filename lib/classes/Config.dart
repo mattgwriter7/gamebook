@@ -41,4 +41,5 @@ class Config {
   //  CUSTOM STUFF! (from here on this is stuff unique to this App)
 
   static const String server_address = 'https://panelsplus.net/other/gamebook/';      //  WILLFIX: THIS MUST CHANGE TO CORRECT SERVER!!
+  static String last_fetced_file = 'START';
 }

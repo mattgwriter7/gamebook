@@ -1,8 +1,14 @@
 // ignore_for_file: camel_case_types
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
+import '../classes/Conn.dart';
+import '../classes/Passage.dart';
+import '../classes/Story.dart';
+import '../models/Passage_Model.dart';
 
 class Fetch_Page extends StatefulWidget {
   const Fetch_Page({ super.key });
@@ -14,13 +20,13 @@ class Fetch_Page extends StatefulWidget {
 class _Fetch_PageState extends State<Fetch_Page> {
 
   // (this page) variables
-  static const String _filename = 'Fetch_Page.dart';
+  static const String filename = 'Fetch_Page.dart';
   
   // (this page) init and dispose
   @override
   void initState() {
     super.initState();
-    Utils.log( _filename, 'initState()' );
+    Utils.log( filename, 'initState()' );
     WidgetsBinding.instance.addPostFrameCallback((_) => _addPostFrameCallbackTriggered(context));  
 
     //  fetch selected passage
@@ -29,16 +35,16 @@ class _Fetch_PageState extends State<Fetch_Page> {
 
   @override
   void dispose() {
-    Utils.log( _filename, 'dispose()');
+    Utils.log( filename, 'dispose()');
     super.dispose();
   }
 
   // (this page) methods
   void _buildTriggered() {
-    Utils.log( _filename, '_buildTriggered()');
+    Utils.log( filename, '_buildTriggered()');
   }
 
-  void fetchPassage() {
+  void fetchPassage2() {
     //  WILLFIX: this fake fetch needs to be replaced by a real one
     Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
       Navigator.of(context).pushReplacementNamed('Passage_Page');
@@ -46,8 +52,47 @@ class _Fetch_PageState extends State<Fetch_Page> {
     return;
   }
 
+  //  WILLFIX: REFACTORING NEEDED!
+  //  This method same as fetchPassage() in Start_Page.dart
+  void fetchPassage() async {
+    bool flag = await Conn.fetch( Story.key + '/${ Config.last_fetced_file }.json' );
+    if ( !flag ) {
+      Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
+      //  WILLFIX: do something with this CONN error
+    } 
+    else {
+      Utils.log( filename, '<<< GOOD CONN! >>>' );
+      // fetch worked, so decode the JSON payload
+      Passage_Model json = Passage_Model.fromJson(jsonDecode( Conn.payload ));      
+
+      if ( json.key!.isEmpty) {
+        //  WILLFIX: do something with error (no author node returned)
+      }
+      else {    
+        Passage.title = json.title!;
+        Passage.description = json.description!;
+         
+         // empty choices
+         Passage.clearChoices();
+         
+         // loop choices
+        int choice_max = json.choices!.length;
+        for ( int i = 0; i < choice_max; i++ ) {
+          Passage.addChoice( json.choices![i].text!, json.choices![i].key!);
+          Utils.log ( filename, i.toString() + '. ' + json.choices![i].text! );
+        }
+
+        //  Fetches successfull, so redirect!
+        Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
+          Navigator.of(context).pushReplacementNamed('Passage_Page');
+        });   
+      }
+    }  
+    return;
+  }
+
   void _addPostFrameCallbackTriggered( context ) {
-    Utils.log( _filename, '_addPostFrameCallbackTriggered()');
+    Utils.log( filename, '_addPostFrameCallbackTriggered()');
   }
 
   // (this page) build
