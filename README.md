@@ -3,11 +3,11 @@ This is a choose-your-own adventure style game.
 
 ## DETAILS
 This project takes inspiration from the gamebooks like 
-"Fighting Fantasy" by Seve Jackson and Ian Livingstone from the early 1980s, although the story genre is unimportant.
+"Fighting Fantasy" by Steve Jackson and Ian Livingstone from the early 1980s, although the story genre is unimportant.
 
-The goal is to have a Flutter App that accepts a "story code" (4-8 characters, like "A7YT4") and then fetches the corresponding story.  There will be a default story for the first time a user runs the App.  
+The goal is to have a Flutter App that accepts a "story key" (4-8 characters, like "A7YT4") and then fetches the corresponding story.  There will be a DEFAULT story for the first time a user runs the App.  
 
-Stories will be completed passage-by-passage as a user makes a choice from the preceding passage.  Each choice will have a "passage code" which will fetch the corresponding passage using JSON. 
+Stories will be completed passage-by-passage as a user makes a choice from the preceding passage.  Each choice will have a "passage key" which will fetch the corresponding passage using JSON. 
 
 ## NOTES
 See [NOTES](https://github.com/mattgwriter7/gamebook/blob/main/NOTES.md)  for more detailed notes, including where I am at with this project, and future plans.

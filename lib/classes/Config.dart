@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class Config {
   
   static const  String    app_name                  = "gamebook";
-  static const  String    app_version               = "1.0.alpha.6";
+  static const  String    app_version               = "1.0.alpha.7";
   static bool             debug_flag                = false;
   
   //  timeouts and delays
@@ -18,10 +18,10 @@ class Config {
   static int              long_delay                = 1500;   // milliseconds
 
   // global "CSS" styles
-  static Color            main_background_color     = const Color(0xFF1A1A1A);
+  static Color            main_background_color     = const Color(0xFFFFFFFF);
   static Color            main_font_color           = Colors.black;
   static const double     main_font_size            = 16;
-  static Color            button_background_color   = Colors.cyan.shade400;
+  static Color            button_background_color   = const Color(0xFF019cd4);
   static Color            accent1_color             = Colors.grey;
   static Color            accent2_color             = const Color(0xFF333333);
   static Color            hilite1_color             = Colors.cyan.shade400;
@@ -41,5 +41,6 @@ class Config {
   //  CUSTOM STUFF! (from here on this is stuff unique to this App)
 
   static const String server_address = 'https://panelsplus.net/other/gamebook/';      //  WILLFIX: THIS MUST CHANGE TO CORRECT SERVER!!
-  static String last_fetced_file = 'START';
+  static String story_key = 'DEFAULT';                      //  this is which story to use      
+  static String passage_key = 'START';                      //  this is which passage to fetch
 }

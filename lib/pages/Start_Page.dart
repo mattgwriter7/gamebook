@@ -87,7 +87,7 @@ class _Start_PageState extends State<Start_Page> {
   //  WILLFIX: REFACTORING NEEDED!
   //  This method same as fetchPassage() in Fetch_Page.dart
   void fetchPassage() async {
-    bool flag = await Conn.fetch( Story.key + '/${ Config.last_fetced_file }.json' );
+    bool flag = await Conn.fetch( Story.key + '/${ Config.passage_key }.json' );
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error
@@ -156,9 +156,20 @@ class _Start_PageState extends State<Start_Page> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: 100,
+                    height: 200,
                     color: Config.debug_flag ? Colors.yellow : Colors.transparent,
-                    child: Center(child: Text('U-CHOOSE', style: TextStyle( fontSize: 32, fontWeight: FontWeight.bold, color: Colors.pink )))),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/logo_square.png"),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
                   Container(
                     height: 50,
                     color: Config.debug_flag ? Colors.blue : Colors.transparent,
@@ -166,19 +177,19 @@ class _Start_PageState extends State<Start_Page> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0,0,10,0),
+                          padding: EdgeInsets.fromLTRB(0,0,6,0),
                           child: SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                Color(0xFFcccccc),
+                                Colors.pink,
                               )
                             ),
                           ),
                         ),
                         SizedBox( width: 2 ),
-                        Text('Loading "$story_title"'),
+                        Text('Loading "$story_title"', style: TextStyle( fontSize: 18)),
                       ],
                     )), 
                   Container(
