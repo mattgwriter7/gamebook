@@ -76,7 +76,8 @@ class _Passage_PageState extends State<Passage_Page> {
             Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
               //  RESTART ?
               if ( Config.passage_key == 'RESTART') { 
-                //  Navigator.of(context).pushReplacementNamed('Title_Page'); 
+                //  WILLFIX: Should this RESET go into Provider?
+                Config.story_started = false;
                 Navigator.of(context).popUntil(ModalRoute.withName('Title_Page')); 
               }              
               else {

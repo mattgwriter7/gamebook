@@ -7,19 +7,38 @@
 import 'package:flutter/material.dart';
 
 import '../classes/Config.dart';
+import '../classes/Story.dart';
+import '../classes/Utils.dart';
 
 class Drawer_Widget extends StatelessWidget {
   Drawer_Widget ({Key? key}) : super(key: key);
 
-  final Divider divider = const Divider( color: Color(0xFF666666), thickness: 1 );
+  final filename = 'Drawer_Widget';
+  final Divider divider = const Divider( color: Color(0xFFcccccc), thickness: 1 );
 
-  ListTile customListTile ( String label ) {
+  void tappedDrawer( BuildContext context, String label ) {
+    Utils.log( filename, 'tappedDrawer() labeled "$label"');
+
+    if ( label == 'Back to Story' ) {
+      Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+        Navigator.of(context).popAndPushNamed('Fetch_Page');
+      }); 
+    }
+    else {
+      Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+        Navigator.of(context).popAndPushNamed('Title_Page');
+      });  
+    }
+    return;
+  }
+
+  ListTile customListTile ( BuildContext context, String label, IconData icn ) {
     return ListTile(
       leading: Padding(
         padding: const EdgeInsets.fromLTRB(10,0,0,0),
         child: Icon(
-          Icons.person,
-          size: 20.0,
+          icn,
+          size: 27.0,
           color: Colors.black,
         ),
       ),
@@ -27,7 +46,9 @@ class Drawer_Widget extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0,0,0,0),
         child: Text( label ),
       ),
-      onTap: () { },
+      onTap: () {
+        tappedDrawer( context, label );
+       },
     );
   }
 
@@ -44,21 +65,21 @@ class Drawer_Widget extends StatelessWidget {
                   color: Colors.transparent,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20,0,15,0),
+                  padding: const EdgeInsets.fromLTRB(20,0,20,0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0,30,0,0),
-                        child: Text('“The Dark Castle of Murwyche”',
+                        child: Text('“${ Story.title }”',
                           style: TextStyle( fontFamily: 'Headline1', fontSize: 24, color: Colors.black ),
                           textAlign: TextAlign.center,
                           ),
                       ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0,10,0,20),
-                          child: Text('by M.R.Garvin',
+                          child: Text('by ${ Story.author }',
                             style: TextStyle( fontSize: 14 ),
                           ),
                         ),
@@ -84,11 +105,13 @@ class Drawer_Widget extends StatelessWidget {
                 height: (MediaQuery.of(context).size.height)/2-20,
               ),
               divider,
-              customListTile('Load New Story'),
+              customListTile( context, 'Load New Story', Icons.menu_book ),
+              Visibility(visible: Config.story_started, child: divider),
+              Visibility(visible: Config.story_started, child: customListTile( context, 'Back to Story', Icons.arrow_back )),              
               divider,
-              customListTile('Settings'),
+              customListTile( context, 'Settings', Icons.settings ),
               divider,
-              customListTile('About “U-CHOOSE”'),
+              customListTile( context, 'About “U-CHOOSE”', Icons.help_outline_sharp ),
               divider,
               
               

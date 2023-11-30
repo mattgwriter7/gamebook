@@ -2,8 +2,8 @@
 
 class Story {
 
-  static String title = '';                         //  0
-  static String author = '';                         //  1
+  static String title = 'Untitled Work';                  
+  static String author = 'Jane Doe';                 
   static String url  = '';
   static String key  = '';
 
