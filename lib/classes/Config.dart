@@ -23,7 +23,7 @@ class Config {
   static const double     main_font_size            = 16;
   static Color            button_background_color   = const Color(0xFF019cd4);
   static Color            accent1_color             = Colors.grey;
-  static Color            accent2_color             = const Color(0xFF333333);
+  static Color            accent2_color             = Color(0xFF019cd4);
   static Color            hilite1_color             = Colors.cyan.shade400;
 
   static Color            appbar_background         = Colors.transparent; // const Color.fromARGB(255, 174, 48, 48);

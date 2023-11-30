@@ -5,66 +5,100 @@
 //  a few lines down...
 
 import 'package:flutter/material.dart';
-import 'dart:async';
+
 import '../classes/Config.dart';
-import '../classes/Utils.dart';
 
 class Drawer_Widget extends StatelessWidget {
   Drawer_Widget ({Key? key}) : super(key: key);
 
+  final Divider divider = const Divider( color: Color(0xFF666666), thickness: 1 );
+
+  ListTile customListTile ( String label ) {
+    return ListTile(
+      leading: Padding(
+        padding: const EdgeInsets.fromLTRB(10,0,0,0),
+        child: Icon(
+          Icons.person,
+          size: 20.0,
+          color: Colors.black,
+        ),
+      ),
+      title: Padding(
+        padding: const EdgeInsets.fromLTRB(0,0,0,0),
+        child: Text( label ),
+      ),
+      onTap: () { },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
 
     return Drawer(
-      // backgroundColor: _backgroundColor,
       child: Stack(
-        children: [
-
+        children: [ 
           ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-
-              //  =======================
-              //  Drawer Image
-              //  =======================              
-              DrawerHeader(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                ),
                 child: Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Container(
-                    /*
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage( _image ),
-                        fit: BoxFit.scaleDown,
-                        alignment: Alignment.center,
+                  padding: const EdgeInsets.fromLTRB(20,0,15,0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0,30,0,0),
+                        child: Text('“The Dark Castle of Murwyche”',
+                          style: TextStyle( fontFamily: 'Headline1', fontSize: 24, color: Colors.black ),
+                          textAlign: TextAlign.center,
+                          ),
                       ),
-                    ),
-                    */
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0,10,0,20),
+                          child: Text('by M.R.Garvin',
+                            style: TextStyle( fontSize: 14 ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                          child: Text('presented by',
+                            style: TextStyle( fontSize: 11, color: Config.accent2_color,  ),
+                          ),
+                        ),                    
+                        Container(
+                          height: 70,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/logo_square.png"),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-                ),
-              
-              //  =======================
-              //  Drawer Items
-              //  =======================
-              /*
-              _getNavItem( context, 'Dashboard'),
-              _divider,          
-              _getNavItem( context, 'Devices'),
-              _divider,          
-              _getNavItem( context, 'Workflow'),
-              _divider,
-              // if it is debug mode, show the Debug option
-              Visibility(
-                visible: true,
-                child: _getNavItem( context, 'Debug')
+                height: (MediaQuery.of(context).size.height)/2-20,
               ),
-              */ 
+              divider,
+              customListTile('Load New Story'),
+              divider,
+              customListTile('Settings'),
+              divider,
+              customListTile('About “U-CHOOSE”'),
+              divider,
+              
+              
             ],
           ),
-
-          
+               Positioned(
+                right: 4,
+                bottom: 3,
+                child: Text('${ Config.app_version }', style: TextStyle( fontSize: 11 ))
+              ),
         ],
       ),
     );
