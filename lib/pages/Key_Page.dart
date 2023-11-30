@@ -38,13 +38,34 @@ class _Key_PageState extends State<Key_Page> {
     Utils.log( filename, '_buildTriggered()');
   }
 
+  String massagedText( String str ) {
+    String allowed_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_',
+           new_str = '',
+           char;
+    int max_chars = str.length;   
+
+    for (int i=0; i<max_chars; i++) {
+      char = str[i];
+      if( allowed_chars.contains(char)) new_str+= char;
+    }           
+    return new_str;
+  }
+
   void keySubmitted() {
     Utils.log( filename, 'keySubmitted() with "${ _key_controller.text }"');  
     //  WILLFIX: needs some error checking
+    String key = _key_controller.text;
+
+    //  massage string
+    key = massagedText( _key_controller.text ); 
+    _key_controller.text = key;
+
+    //  allow submission, even if blank
     Config.story_key = _key_controller.text;
     Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
       Navigator.of(context).pushReplacementNamed('Start_Page');
     });    
+
     return;
   }
 
@@ -123,6 +144,9 @@ class _Key_PageState extends State<Key_Page> {
                                     child: TextField(
                                       onSubmitted: (value)  => keySubmitted(),
                                       controller: _key_controller,
+                                      autocorrect: false,
+                                      enableSuggestions: false,
+                                      keyboardType: TextInputType.text,
                                       inputFormatters: [
                                         UpperCaseTextFormatter(),
                                       ],

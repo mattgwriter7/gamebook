@@ -101,7 +101,7 @@ class _Start_PageState extends State<Start_Page> {
       fail_count++;
       setState(() {
         loading_flag = false;
-        if( fail_count > 4 ) { fail_mssg = 'Should you try a different\nstory key?'; return; }
+        if( fail_count > 4 ) { fail_mssg = 'Should you try a different\nStory Key?'; return; }
         if( fail_count > 2 ) { fail_mssg = 'Is your network\nconnected?'; return; }
       });  
     });     
