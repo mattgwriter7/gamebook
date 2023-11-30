@@ -22,7 +22,7 @@ class Conn {
     bool flag = false;  // true means the connection was good!
     
     //  build the URL
-    String full_url = base_url + url + '?t=1';
+    String full_url = base_url + url;
     
     // attempt a fetch
     Utils.log( _fileName, 'Conn.fetch() using "$full_url"');

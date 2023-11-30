@@ -4,7 +4,7 @@ class Story_Model {
   String? url;
   String? key;
 
-  Story_Model({this.title, this.author, this.url});
+  Story_Model({this.title, this.author, this.url, this.key });
 
   Story_Model.fromJson(Map<String, dynamic> json) {
     title = json['title'];
