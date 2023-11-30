@@ -124,7 +124,7 @@ class Drawer_Widget extends StatelessWidget {
               divider,
               customListTile( context, 'Settings', Icons.settings ),
               divider,
-              customListTile( context, 'About “U-CHOOSE”', Icons.help_outline_sharp ),
+              customListTile( context, 'About “U·CHOOSE”', Icons.help_outline_sharp ),
               divider,
               
               
