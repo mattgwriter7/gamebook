@@ -68,26 +68,17 @@ class _Start_PageState extends State<Start_Page> {
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error
-      Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
-        fail_count++;
-        setState(() {
-          loading_flag = false;
-          if( fail_count > 4 ) { fail_mssg = 'Should you try a different\nstory key?'; return; }
-          if( fail_count > 2 ) { fail_mssg = 'Is your network\nconnected?'; return; }
-        });  
-      });       
+      connectionFailedAgain();
     } 
     else {
-      Utils.log( filename, '<<< GOOD CONN! >>>' );
-      // fetch worked, so decode the JSON payload
-      Story_Model json = Story_Model.fromJson(jsonDecode( Conn.payload ));      
-
-
-      if ( json.status! == 'bad') {
-        //  WILLFIX: do something with error (no author node returned)
-        Utils.log( filename, '<<< BAD KEY! >>>' );
+      var response = json.decode(Conn.payload);
+      if ( response['status'] == 'bad' ) {
+        Utils.log( filename, '<<< GOOD CONN, BAD JSON! >>>');
+        connectionFailedAgain();
       }
       else {
+        Utils.log( filename, '<<< GOOD CONN, GOOD JSON! >>>');
+        Story_Model json = Story_Model.fromJson(jsonDecode( Conn.payload ));
         Story.title = json.title!;
         Story.author = json.author!;
         Story.url = json.url!;
@@ -96,9 +87,21 @@ class _Start_PageState extends State<Start_Page> {
         //  Fetches successfull, so redirect!
         Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
           Navigator.of(context).pushNamed('Title_Page');
-        });            
+        }); 
       }
     }   
+    return;
+  }
+
+  void connectionFailedAgain() {
+    Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
+      fail_count++;
+      setState(() {
+        loading_flag = false;
+        if( fail_count > 4 ) { fail_mssg = 'Should you try a different\nstory key?'; return; }
+        if( fail_count > 2 ) { fail_mssg = 'Is your network\nconnected?'; return; }
+      });  
+    });     
     return;
   }
 
