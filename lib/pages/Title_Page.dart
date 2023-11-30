@@ -56,7 +56,7 @@ class Title_Page extends StatelessWidget {
                     child: Image.network( '${ Config.server_address }${ Story.key }/assets/book_cover.png',)  //  this image is always called "book_cover.png"
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50,10,40,40),
+                    padding: const EdgeInsets.fromLTRB(50,5,40,20),
                     child: Text(  Story.author ),
                   ),
                   ElevatedButton(

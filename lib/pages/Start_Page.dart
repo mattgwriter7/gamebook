@@ -131,7 +131,7 @@ class _Start_PageState extends State<Start_Page> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0,20,0,0),
+                    padding: const EdgeInsets.fromLTRB(0,50,0,0),
                     child: Container(
                       height: 120,
                       color: Config.debug_flag ? Colors.yellow : Colors.transparent,
@@ -146,7 +146,7 @@ class _Start_PageState extends State<Start_Page> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
                   Container(
                     height: 50,
