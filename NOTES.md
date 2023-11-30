@@ -52,3 +52,6 @@ If the App can'r find a passage, it means:
 * there is a network error
 
 If this happens it should use the OOPS.JSON page, and indicate which passage_Key failed. (WILLFIX: I haven't done this yet.)I 
+
+## RESOURCES
+https://fonts.google.com/icons
