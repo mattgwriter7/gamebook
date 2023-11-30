@@ -63,7 +63,8 @@ class _Start_PageState extends State<Start_Page> {
   void fetchStory() async {
 
     //  <<< START OF TRY FETCH >>>
-    bool flag = await Conn.fetch( 'story.json' );
+    //  bool flag = await Conn.fetch( 'story.json' );
+    bool flag = await Conn.fetch( 'lookup.php?key=' + Config.story_key );
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error
