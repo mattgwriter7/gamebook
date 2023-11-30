@@ -6,5 +6,6 @@ class Story {
   static String author = 'Jane Doe';                 
   static String url  = '';
   static String key  = '';
+  static String status  = '';
 
 }

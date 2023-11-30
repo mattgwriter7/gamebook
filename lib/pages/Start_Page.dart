@@ -82,8 +82,10 @@ class _Start_PageState extends State<Start_Page> {
       // fetch worked, so decode the JSON payload
       Story_Model json = Story_Model.fromJson(jsonDecode( Conn.payload ));      
 
-      if ( json.author!.isEmpty) {
+
+      if ( json.status! == 'bad') {
         //  WILLFIX: do something with error (no author node returned)
+        Utils.log( filename, '<<< BAD KEY! >>>' );
       }
       else {
         Story.title = json.title!;
