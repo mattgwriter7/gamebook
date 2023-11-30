@@ -40,6 +40,9 @@ class _Start_PageState extends State<Start_Page> {
 
     //  reset story
     Config.story_started = false;
+    loading_flag = true;
+    fail_mssg = 'Oops! The story could\nnot be loaded';
+    fail_count = 0;
     
     //  if there is no story key, set it to DEFAULT
     if ( Config.story_key == '' ) {
