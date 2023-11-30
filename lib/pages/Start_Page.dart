@@ -135,101 +135,99 @@ class _Start_PageState extends State<Start_Page> {
             drawer: Drawer_Widget(),
             body: Container(
               width: double.infinity,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0,70,0,0), //  WILLFIX: SEE NOTES.md "FORM ISSUE"
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,70,0,0), //  WILLFIX: SEE NOTES.md "FORM ISSUE"
+                    child: Container(
+                      height: 120,
+                      color: Config.debug_flag ? Colors.yellow : Colors.transparent,
                       child: Container(
-                        height: 120,
-                        color: Config.debug_flag ? Colors.yellow : Colors.transparent,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/logo_square.png"),
-                              fit: BoxFit.contain,
-                            ),
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/logo_square.png"),
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      color: Config.debug_flag ? Colors.blue : Colors.transparent,
-                      child: 
-                        loading_flag  ?
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(0,0,6,0),
-                                child: SizedBox(
-                                  width: 20,
-                                  height: 20,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      Colors.pink,
-                                    )
-                                  ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 50,
+                    color: Config.debug_flag ? Colors.blue : Colors.transparent,
+                    child: 
+                      loading_flag  ?
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0,0,6,0),
+                              child: SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.pink,
+                                  )
                                 ),
                               ),
-                              SizedBox( width: 2 ),
-                              Text('Loading "${ Config.story_key }"', style: TextStyle( fontSize: 18)),
-                            ],
-                          )
-                        : 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(0,0,6,0),
-                                child: SizedBox(
-                                  width: 20,
-                                  height: 20,
-                                  child: Icon(
-                                    Icons.error,
-                                    size: 20,
-                                    color: Colors.pink,
-                                  ),
+                            ),
+                            SizedBox( width: 2 ),
+                            Text('Loading "${ Config.story_key }"', style: TextStyle( fontSize: 18)),
+                          ],
+                        )
+                      : 
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0,0,6,0),
+                              child: SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Icon(
+                                  Icons.error,
+                                  size: 20,
+                                  color: Colors.pink,
                                 ),
                               ),
-                              SizedBox( width: 2 ),
-                              Text('Key "${ Config.story_key }" failed', style: TextStyle( fontSize: 18)),
-                            ],
-                          )                   
-                    ),  
+                            ),
+                            SizedBox( width: 2 ),
+                            Text('Key "${ Config.story_key }" failed', style: TextStyle( fontSize: 18)),
+                          ],
+                        )                   
+                  ),  
+                  Container(
+                    height: 100,
+                    color: Config.debug_flag ? Colors.green : Colors.transparent,
+                    child: Center(
+                      child: Visibility(
+                        visible: !loading_flag,
+                        child: Text( fail_mssg, textAlign: TextAlign.center,)))),                        
                     Container(
-                      height: 100,
-                      color: Config.debug_flag ? Colors.green : Colors.transparent,
-                      child: Center(
+                      height: 56,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Visibility(
                           visible: !loading_flag,
-                          child: Text( fail_mssg, textAlign: TextAlign.center,)))),                        
-                      Container(
-                        height: 56,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Visibility(
-                            visible: !loading_flag,
-                            child: ElevatedButton(
-                              child: Text('try again'),
-                              onPressed: ()  {
-                                setState(() {
-                                  loading_flag = true;
-                                });
-                                fetchStory();
-                              },
-                            ),
+                          child: ElevatedButton(
+                            child: Text('try again'),
+                            onPressed: ()  {
+                              setState(() {
+                                loading_flag = true;
+                              });
+                              fetchStory();
+                            },
                           ),
                         ),
-                      )                                    
-                  ],
-                ),
+                      ),
+                    )                                    
+                ],
               )
             ),
           ),

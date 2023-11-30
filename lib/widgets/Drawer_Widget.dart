@@ -27,7 +27,7 @@ class Drawer_Widget extends StatelessWidget {
     else {
       Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
         switch ( label ) {
-          case 'Load Other Story':
+          case 'Load Story':
             Navigator.of(context).popAndPushNamed('Key_Page');
             break;
           case 'Settings': 
@@ -118,7 +118,7 @@ class Drawer_Widget extends StatelessWidget {
                 height: (MediaQuery.of(context).size.height)/2-40,
               ),
               divider,
-              customListTile( context, 'Load Other Story', Icons.menu_book ),
+              customListTile( context, 'Load Story', Icons.menu_book ),
               Visibility(visible: Config.story_started, child: divider),
               Visibility(visible: Config.story_started, child: customListTile( context, 'Back to Story', Icons.arrow_back )),              
               divider,

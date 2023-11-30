@@ -45,7 +45,7 @@ class Title_Page extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50,0,40,10),
+                    padding: const EdgeInsets.fromLTRB(30,0,30,10),
                     child: Text( 
                       Story.title, 
                       textAlign: TextAlign.center,
@@ -57,8 +57,8 @@ class Title_Page extends StatelessWidget {
                      child: Image.network( '${ Config.server_address }${ Story.key }/assets/book_cover.png',) 
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50,5,40,20),
-                    child: Text(  Story.author ),
+                    padding: const EdgeInsets.fromLTRB(30,5,30,20),
+                    child: Text(  Story.author, textAlign: TextAlign.center, ),
                   ),
                   ElevatedButton(
                     child: Text('begin'),

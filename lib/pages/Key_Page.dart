@@ -68,7 +68,7 @@ class _Key_PageState extends State<Key_Page> {
             resizeToAvoidBottomInset: true,  
             //  backgroundColor: Config.main_background_color,
             appBar: AppBar(
-              title: const Text( 'Load Other Story' ),
+              title: const Text( 'Load Story' ),
               centerTitle: true,
               backgroundColor: Colors.pink,
               elevation: 0,
@@ -82,6 +82,13 @@ class _Key_PageState extends State<Key_Page> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    //  WILLFIX: This SizedBox is a total hack.  I *think* it needs to be fixed,
+                    //  but I am waiting to find a device that breaks it.  Basically, this
+                    //  MediaQuery, coupled with ptting the whole UI in a SingleChildScrollView(),
+                    //  allows the keyboard to popup without obscuring the screen
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/11,
+                    ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0,70,0,0), //  WILLFIX: SEE NOTES.md "FORM ISSUE"
                       child: Container(

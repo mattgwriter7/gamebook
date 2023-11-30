@@ -34,11 +34,20 @@ class Dummy1_Page extends StatelessWidget {
           ), 
           //  drawer: Drawer_Widget(),
           body: Container(
-              color: Colors.transparent,
-              child: const Center(
-                child: Text( filename ),
-              ),
+            width: double.infinity,
+            color: Colors.transparent,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text( filename,
+                  style: TextStyle( fontWeight: FontWeight.bold ) ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text( '(not completed)' ),
+                ),
+              ],
             ),
+          ),
         ),
       ),
     );
