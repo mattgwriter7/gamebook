@@ -60,9 +60,18 @@ class _Dummy2_PageState extends State<Dummy2_Page> {
             ), //AppBar
             // drawer: DrawerWidget(),
             body: Container(
+              width: double.infinity,
               color: Colors.transparent,
-              child: const Center(
-                child: Text( filename ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text( filename,
+                    style: TextStyle( fontWeight: FontWeight.bold ) ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text( '(not completed)' ),
+                  ),
+                ],
               ),
             ),
           ),
