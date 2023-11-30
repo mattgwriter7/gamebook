@@ -48,6 +48,12 @@ class About_Page extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text( '(not completed)' ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text( Config.license,
+                    style: TextStyle( fontSize: 12, fontStyle: FontStyle.italic ),
+                    textAlign: TextAlign.center,),
+                )
               ],
             ),
           ),

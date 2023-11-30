@@ -44,4 +44,5 @@ class Config {
   static String story_key = '';                             //  this is which story to use (gets set in Start_Page when empty)     
   static String passage_key = 'START';                      //  this is which passage to fetch
   static bool story_started = false;
+  static String license = 'This code is freely available at\n\https://github.com/mattgwriter7/gamebook\nand uses the standard MIT license';
 }
