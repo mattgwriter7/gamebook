@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 
-class Dummy1_Page extends StatelessWidget {
-  const Dummy1_Page({super.key});
+class Settings_Page extends StatelessWidget {
+  const Settings_Page({super.key});
 
   //  (this page) variables
-  static const String filename = 'Dummy1_Page.dart';  
+  static const String filename = 'Settings_Page.dart';  
 
   // (this page) methods
   void _buildTriggered() {
@@ -29,9 +29,12 @@ class Dummy1_Page extends StatelessWidget {
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
           appBar: AppBar(
-            title: const Text( filename ),
-            centerTitle: true,
-          ), 
+              title: const Text( 'Settings' ),
+              centerTitle: true,
+              backgroundColor: Colors.pink,
+              elevation: 0,
+              foregroundColor: Colors.black,
+            ), 
           //  drawer: Drawer_Widget(),
           body: Container(
               color: Colors.transparent,

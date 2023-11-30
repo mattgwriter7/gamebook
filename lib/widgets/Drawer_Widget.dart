@@ -26,7 +26,19 @@ class Drawer_Widget extends StatelessWidget {
     }
     else {
       Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-        Navigator.of(context).popAndPushNamed('Title_Page');
+        switch ( label ) {
+          case 'Load Other Story':
+            Navigator.of(context).popAndPushNamed('Key_Page');
+            break;
+          case 'Settings': 
+            Navigator.of(context).popAndPushNamed('Settings_Page');
+            break;
+          default: 
+            Navigator.of(context).popAndPushNamed('About_Page');
+          break;  
+        }
+        return;
+        
       });  
     }
     return;
@@ -106,7 +118,7 @@ class Drawer_Widget extends StatelessWidget {
                 height: (MediaQuery.of(context).size.height)/2-40,
               ),
               divider,
-              customListTile( context, 'Load New Story', Icons.menu_book ),
+              customListTile( context, 'Load Other Story', Icons.menu_book ),
               Visibility(visible: Config.story_started, child: divider),
               Visibility(visible: Config.story_started, child: customListTile( context, 'Back to Story', Icons.arrow_back )),              
               divider,
