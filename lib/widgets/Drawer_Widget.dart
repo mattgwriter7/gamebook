@@ -26,7 +26,19 @@ class Drawer_Widget extends StatelessWidget {
     }
     else {
       Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-        Navigator.of(context).popAndPushNamed('Title_Page');
+        switch ( label ) {
+          case 'Load Other Story':
+            Navigator.of(context).popAndPushNamed('Key_Page');
+            break;
+          case 'Settings': 
+            Navigator.of(context).popAndPushNamed('Settings_Page');
+            break;
+          default: 
+            Navigator.of(context).popAndPushNamed('About_Page');
+          break;  
+        }
+        return;
+        
       });  
     }
     return;
@@ -34,6 +46,7 @@ class Drawer_Widget extends StatelessWidget {
 
   ListTile customListTile ( BuildContext context, String label, IconData icn ) {
     return ListTile(
+      dense: true,
       leading: Padding(
         padding: const EdgeInsets.fromLTRB(10,0,0,0),
         child: Icon(
@@ -71,7 +84,7 @@ class Drawer_Widget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0,30,0,0),
+                        padding: const EdgeInsets.fromLTRB(0,20,0,0),
                         child: Text('“${ Story.title }”',
                           style: TextStyle( fontFamily: 'Headline1', fontSize: 24, color: Colors.black ),
                           textAlign: TextAlign.center,
@@ -102,10 +115,10 @@ class Drawer_Widget extends StatelessWidget {
                     ],
                   ),
                 ),
-                height: (MediaQuery.of(context).size.height)/2-20,
+                height: (MediaQuery.of(context).size.height)/2-40,
               ),
               divider,
-              customListTile( context, 'Load New Story', Icons.menu_book ),
+              customListTile( context, 'Load Other Story', Icons.menu_book ),
               Visibility(visible: Config.story_started, child: divider),
               Visibility(visible: Config.story_started, child: customListTile( context, 'Back to Story', Icons.arrow_back )),              
               divider,

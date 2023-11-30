@@ -7,11 +7,11 @@ import '../widgets/Drawer_Widget.dart';
 import '../classes/Story.dart';
 
 class Title_Page extends StatelessWidget {
-  const Title_Page({super.key});
+  Title_Page({super.key});
 
   //  (this page) variables
   static const String _filename = 'Title_Page.dart';  
-
+  var image = Image.network( '${ Config.server_address }${ Story.key }/assets/book_cover.png');
   // (this page) methods
   void _buildTriggered() {
     Utils.log( _filename, '_buildTriggered()');
@@ -53,7 +53,8 @@ class Title_Page extends StatelessWidget {
                   ),
                   Container(
                     height: 240,
-                    child: Image.network( '${ Config.server_address }${ Story.key }/assets/book_cover.png',)  //  this image is always called "book_cover.png"
+                     //  this image is always called "book_cover.png"
+                     child: Image.network( '${ Config.server_address }${ Story.key }/assets/book_cover.png',) 
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50,5,40,20),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './pages/_AllPages.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
@@ -17,7 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //  Show main page loaded in log
     Utils.log( filename, '== init "${ Config.app_name }" version ${ Config.app_version } ==' );
-
+    //  Force portrait only
+    //  see: https://stackoverflow.com/questions/51806662/how-to-set-landscape-orientation-mode-for-flutter-app
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
       title: 'Gamebook',
       debugShowCheckedModeBanner: false,
@@ -53,9 +59,12 @@ class MyApp extends StatelessWidget {
         'Start_Page': (context) => const Start_Page(),
         'End_Page': (context) => const End_Page(),
         //  other pages
-        'Title_Page': (context) => const Title_Page(),
+        'Title_Page': (context) => Title_Page(),
         'Passage_Page': (context) => const Passage_Page(),
         'Fetch_Page': (context) => const Fetch_Page(),
+        'Key_Page': (context) => const Key_Page(),
+        'Settings_Page': (context) => const Settings_Page(),
+        'About_Page': (context) => const About_Page(),
         //  dummy pages (remove from production)
         'Dummies_Page': (context) => const Dummies_Page(),
         'Dummy1_Page': (context) => const Dummy1_Page(),

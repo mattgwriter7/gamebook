@@ -14,29 +14,29 @@ class Dummy2_Page extends StatefulWidget {
 class _Dummy2_PageState extends State<Dummy2_Page> {
 
   // (this page) variables
-  static const String _filename = 'Dummy2_Page.dart';
+  static const String filename = 'Dummy2_Page.dart';
   
   // (this page) init and dispose
   @override
   void initState() {
     super.initState();
-    Utils.log( _filename, 'initState()' );
+    Utils.log( filename, 'initState()' );
     WidgetsBinding.instance.addPostFrameCallback((_) => _addPostFrameCallbackTriggered(context));  
   }
 
   @override
   void dispose() {
-    Utils.log( _filename, 'dispose()');
+    Utils.log( filename, 'dispose()');
     super.dispose();
   }
 
   // (this page) methods
   void _buildTriggered() {
-    Utils.log( _filename, '_buildTriggered()');
+    Utils.log( filename, '_buildTriggered()');
   }
 
   void _addPostFrameCallbackTriggered( context ) {
-    Utils.log( _filename, '_addPostFrameCallbackTriggered()');
+    Utils.log( filename, '_addPostFrameCallbackTriggered()');
   }
 
   // (this page) build
@@ -55,14 +55,14 @@ class _Dummy2_PageState extends State<Dummy2_Page> {
             resizeToAvoidBottomInset: false,  
             //  backgroundColor: Config.main_background_color,
             appBar: AppBar(
-              title: const Text( _filename ),
+              title: const Text( filename ),
               centerTitle: true,
             ), //AppBar
             // drawer: DrawerWidget(),
             body: Container(
               color: Colors.transparent,
               child: const Center(
-                child: Text( _filename ),
+                child: Text( filename ),
               ),
             ),
           ),
