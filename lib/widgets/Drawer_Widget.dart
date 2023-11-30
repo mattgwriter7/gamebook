@@ -34,6 +34,7 @@ class Drawer_Widget extends StatelessWidget {
 
   ListTile customListTile ( BuildContext context, String label, IconData icn ) {
     return ListTile(
+      dense: true,
       leading: Padding(
         padding: const EdgeInsets.fromLTRB(10,0,0,0),
         child: Icon(
@@ -71,7 +72,7 @@ class Drawer_Widget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0,30,0,0),
+                        padding: const EdgeInsets.fromLTRB(0,20,0,0),
                         child: Text('“${ Story.title }”',
                           style: TextStyle( fontFamily: 'Headline1', fontSize: 24, color: Colors.black ),
                           textAlign: TextAlign.center,
@@ -102,7 +103,7 @@ class Drawer_Widget extends StatelessWidget {
                     ],
                   ),
                 ),
-                height: (MediaQuery.of(context).size.height)/2-20,
+                height: (MediaQuery.of(context).size.height)/2-40,
               ),
               divider,
               customListTile( context, 'Load New Story', Icons.menu_book ),
