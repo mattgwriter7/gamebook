@@ -65,6 +65,7 @@ class MyApp extends StatelessWidget {
         'Key_Page': (context) => const Key_Page(),
         'Settings_Page': (context) => const Settings_Page(),
         'About_Page': (context) => const About_Page(),
+        'More_Page': (context) => const More_Page(),
         //  dummy pages (remove from production)
         'Dummies_Page': (context) => const Dummies_Page(),
         'Dummy1_Page': (context) => const Dummy1_Page(),
