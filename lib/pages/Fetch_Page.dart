@@ -79,6 +79,9 @@ class _Fetch_PageState extends State<Fetch_Page> {
           Utils.log ( filename, i.toString() + '. ' + json.choices![i].text! );
         }
 
+        //  add one more choice: "More Options"
+        Passage.addChoice( 'More Options', 'MORE');
+
         //  Fetches successfull, so redirect!
         Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
           Navigator.of(context).pushReplacementNamed('Passage_Page');
