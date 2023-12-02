@@ -61,7 +61,7 @@ class _Key_PageState extends State<Key_Page> {
     _key_controller.text = key;
 
     //  allow submission, even if blank
-    Config.story_key = _key_controller.text;
+    Config.STORY_KEY = _key_controller.text;
     Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
       Navigator.of(context).pushReplacementNamed('Start_Page');
     });    

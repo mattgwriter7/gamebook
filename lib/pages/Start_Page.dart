@@ -45,8 +45,8 @@ class _Start_PageState extends State<Start_Page> {
     fail_count = 0;
     
     //  if there is no story key, set it to DEFAULT
-    if ( Config.story_key == '' ) {
-      Config.story_key = 'DEFAULT';
+    if ( Config.STORY_KEY == '' ) {
+      Config.STORY_KEY = 'DEFAULT';
     }
     //  now fetch the story
     fetchStory();
@@ -67,7 +67,7 @@ class _Start_PageState extends State<Start_Page> {
 
     //  <<< START OF TRY FETCH >>>
     //  bool flag = await Conn.fetch( 'story.json' );
-    bool flag = await Conn.fetch( 'lookup.php?key=' + Config.story_key );
+    bool flag = await Conn.fetch( 'lookup.php?key=' + Config.STORY_KEY );
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error
@@ -178,7 +178,7 @@ class _Start_PageState extends State<Start_Page> {
                               ),
                             ),
                             SizedBox( width: 2 ),
-                            Text('Loading "${ Config.story_key }"', style: TextStyle( fontSize: 18)),
+                            Text('Loading "${ Config.STORY_KEY }"', style: TextStyle( fontSize: 18)),
                           ],
                         )
                       : 
@@ -198,7 +198,7 @@ class _Start_PageState extends State<Start_Page> {
                               ),
                             ),
                             SizedBox( width: 2 ),
-                            Text('Key "${ Config.story_key }" failed', style: TextStyle( fontSize: 18)),
+                            Text('Key "${ Config.STORY_KEY }" failed', style: TextStyle( fontSize: 18)),
                           ],
                         )                   
                   ),  

@@ -53,7 +53,10 @@ class _Passage_PageState extends State<Passage_Page> {
     button_count++;
     int index = button_count;
     double _padme = 0; 
-    if ( index == Passage.choice_text.length-1 ) _padme = 100;
+    if ( index == Passage.choice_text.length-1 ) { 
+      _padme = 100;
+      button_count = 0; //  WILLFIX: Hot Reload fix (remove from Production)
+    }
     return Container(
       width: double.infinity,
       child: Padding(
@@ -72,18 +75,30 @@ class _Passage_PageState extends State<Passage_Page> {
           onPressed: () {
             Utils.log( filename, 'clicked choice #' + index.toString() + ' ("${ Passage.choice_key[index] }")');
             //  <<< THIS IS WHERE NEXT JSON FILE IS SET >>>
-            Config.passage_key = Passage.choice_key[index];
-            Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-              //  RESTART ?
-              if ( Config.passage_key == 'RESTART') { 
+            Config.PASSAGE_KEY = Passage.choice_key[index];
+            
+              //  SPECIAL CASE #1: RESTART 
+              if ( Config.PASSAGE_KEY == 'RESTART') { 
                 //  WILLFIX: Should this RESET go into Provider?
                 Config.story_started = false;
-                Navigator.of(context).popUntil(ModalRoute.withName('Title_Page')); 
+                Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                  Navigator.of(context).popUntil(ModalRoute.withName('Title_Page'));
+                });
+                return;
               }              
-              else {
+              //  SPECIAL CASE #2: MORE OPTIONS
+              if ( Config.PASSAGE_KEY == 'MORE') { 
+              Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                Navigator.of(context).pushNamed('More_Page');
+              }); 
+                return;
+              }              
+              //  if no spcial case do a normal fetch:
+              Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
                 Navigator.of(context).pushReplacementNamed('Fetch_Page');
-              }
-            });             
+              }); 
+              return;
+                       
           },
         ),
       ),

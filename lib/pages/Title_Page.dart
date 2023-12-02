@@ -64,7 +64,7 @@ class Title_Page extends StatelessWidget {
                     child: Text('begin'),
                     onPressed: () {
                       //  start the story!!!
-                      Config.passage_key = 'START';
+                      Config.PASSAGE_KEY = 'START';
                       Config.story_started = true;
                       Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
                         Navigator.of(context).pushNamed('Fetch_Page');
