@@ -32,7 +32,7 @@ class _Fetch_PageState extends State<Fetch_Page> {
 
     //  use which spinner message?
     spinner_message = 'Fetching passage...';
-    if ( Config.passage_key == 'START' ) spinner_message  = 'The story begins...'; 
+    if ( Config.PASSAGE_KEY == 'START' ) spinner_message  = 'The story begins...'; 
     //  fetch selected passage
     fetchPassage();    
   }
@@ -50,7 +50,7 @@ class _Fetch_PageState extends State<Fetch_Page> {
 
   //  <<< THIS IS THE MEAT OF THE APP: FETCHING PASSAGES, ONE-BY-ONE >>>
   void fetchPassage() async {
-    bool flag = await Conn.fetch( Story.key + '/${ Config.passage_key }.json' );
+    bool flag = await Conn.fetch( Story.key + '/${ Config.PASSAGE_KEY }.json' );
     if ( !flag ) {
       Utils.log( filename, '<<< BAD CONN! ${ Conn.status.toString() } >>>');
       //  WILLFIX: do something with this CONN error

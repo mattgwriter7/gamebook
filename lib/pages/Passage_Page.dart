@@ -75,28 +75,28 @@ class _Passage_PageState extends State<Passage_Page> {
           onPressed: () {
             Utils.log( filename, 'clicked choice #' + index.toString() + ' ("${ Passage.choice_key[index] }")');
             //  <<< THIS IS WHERE NEXT JSON FILE IS SET >>>
-            Config.passage_key = Passage.choice_key[index];
+            Config.PASSAGE_KEY = Passage.choice_key[index];
             
               //  SPECIAL CASE #1: RESTART 
-              if ( Config.passage_key == 'RESTART') { 
+              if ( Config.PASSAGE_KEY == 'RESTART') { 
                 //  WILLFIX: Should this RESET go into Provider?
                 Config.story_started = false;
-Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-	Navigator.of(context).popUntil(ModalRoute.withName('Title_Page'));
-});
+                Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                  Navigator.of(context).popUntil(ModalRoute.withName('Title_Page'));
+                });
                 return;
               }              
               //  SPECIAL CASE #2: MORE OPTIONS
-              if ( Config.passage_key == 'MORE') { 
-Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-	Navigator.of(context).pushNamed('More_Page');
-}); 
+              if ( Config.PASSAGE_KEY == 'MORE') { 
+              Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                Navigator.of(context).pushNamed('More_Page');
+              }); 
                 return;
               }              
               //  if no spcial case do a normal fetch:
-Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-	Navigator.of(context).pushReplacementNamed('Fetch_Page');
-}); 
+              Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                Navigator.of(context).pushReplacementNamed('Fetch_Page');
+              }); 
               return;
                        
           },
