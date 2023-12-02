@@ -146,9 +146,11 @@ class _Passage_PageState extends State<Passage_Page> {
         return  caption_box;        
       case 3: // DESCRIPTION
         return  Container( 
+          width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(25,0,25,0),
-            child: Text( Passage.description ),
+            child: Text( Passage.description,
+            textAlign: TextAlign.left, ),
           ),
         );
       case 4: // WHAT DO YOU DO?

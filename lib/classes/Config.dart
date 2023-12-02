@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class Config {
   
   static const  String    app_name                  = "gamebook";
-  static const  String    app_version               = "1.0.alpha.12";
+  static const  String    app_version               = "1.0.alpha.13";
   static bool             debug_flag                = false;
   
   //  timeouts and delays
