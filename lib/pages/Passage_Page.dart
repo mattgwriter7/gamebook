@@ -53,7 +53,10 @@ class _Passage_PageState extends State<Passage_Page> {
     button_count++;
     int index = button_count;
     double _padme = 0; 
-    if ( index == Passage.choice_text.length-1 ) _padme = 100;
+    if ( index == Passage.choice_text.length-1 ) { 
+      _padme = 100;
+      button_count = 0; //  WILLFIX: Hot Reload fix (remove from Production)
+    }
     return Container(
       width: double.infinity,
       child: Padding(

@@ -78,7 +78,7 @@ class More_Page extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Go to title page',
+                        'Quit and go to title page',
                         style: TextStyle(fontSize: 16),
                         ),
                     ),  
@@ -94,12 +94,12 @@ class More_Page extends StatelessWidget {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.fromLTRB(25,12,25,20),
+                  padding: EdgeInsets.fromLTRB(25,12,25,0),
                   child: ElevatedButton(
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Try another story',
+                        'Quit and try another story',
                         style: TextStyle(fontSize: 16),
                         ),
                     ),  
@@ -110,6 +110,28 @@ class More_Page extends StatelessWidget {
                       Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
                         //Navigator.of(context).pushNamedAndRemoveUntil('Key_Page', (Route route) => false);
                         Navigator.of(context).popAndPushNamed('Key_Page');
+                      }); 
+                    },
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.fromLTRB(25,12,25,20),
+                  child: ElevatedButton(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Story credits',
+                        style: TextStyle(fontSize: 16),
+                        ),
+                    ),  
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.fromLTRB(16,12,12, 12 ),
+                    ),                        
+                    onPressed: () {
+                      Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                        //Navigator.of(context).pushNamedAndRemoveUntil('Key_Page', (Route route) => false);
+                        Navigator.of(context).pushNamed('Credits_Page');
                       }); 
                     },
                   ),

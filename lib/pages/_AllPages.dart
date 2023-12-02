@@ -11,6 +11,7 @@ export 'Key_Page.dart';
 export 'Settings_Page.dart';
 export 'About_Page.dart';
 export 'More_Page.dart';
+export 'Credits_Page.dart';
 //  dummy pages
 export './dummies/Dummies_Page.dart';
 export './dummies/Dummy1_Page.dart';
