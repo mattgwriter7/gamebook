@@ -1,10 +1,12 @@
 // ignore_for_file: file_names, constant_identifier_names, non_constant_identifier_names
 
-//  Presenting the "Config" class (version 1.0)
-//  This class is for "global variables" used by
-//  the app.
-
 import 'package:flutter/material.dart';
+
+//  ----------------------------------------------------
+//  Presenting the "Config" class (version 1.0)
+//  This class is for "global variables" used throughout
+//  the app.
+//  ----------------------------------------------------
 
 class Config {
   

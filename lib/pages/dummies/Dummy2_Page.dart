@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 
+//  This helper page serves as a template
+//  for future Statefull pages
+//  (and should be removed from Production)
+
 class Dummy2_Page extends StatefulWidget {
   const Dummy2_Page({ super.key });
 

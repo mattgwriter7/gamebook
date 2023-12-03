@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 
+//  ----------------------------------------------------
+//  At the bottom of the choices for each passage is a
+//  "More Options" button.  Hat button takes you to
+//  this page for "special" actions, like: "Quit story,
+//  "View story credits," etc.
+//  ----------------------------------------------------
+
 class More_Page extends StatelessWidget {
   const More_Page({super.key});
 

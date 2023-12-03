@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 
+//  ----------------------------------------------------
+//  This page displays Story credits. (Things like
+//  "written by", "illustration by," legal notices
+//  etc.)
+//
+//  It is an array of name/value pairs fetched from
+//  "credits.json" for a particular Story.
+//  ----------------------------------------------------
+
 class Credits_Page extends StatelessWidget {
   const Credits_Page({super.key});
 

@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 
+//  ----------------------------------------------------
+//  This is a placeholder page (awaiting content)
+//  ----------------------------------------------------
+
 class About_Page extends StatelessWidget {
   const About_Page({super.key});
 

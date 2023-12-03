@@ -1,5 +1,9 @@
 // ignore_for_file: camel_case_types
 
+//  This helper page serves as the "Table of Contents" 
+//  for other Dummy pages
+//  (and should be removed from Producion)
+
 import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
@@ -8,11 +12,11 @@ class Dummies_Page extends StatelessWidget {
   const Dummies_Page({super.key});
 
   //  (this page) variables
-  static const String _filename = 'Dummies_Page.dart';  
+  static const String filename = 'Dummies_Page.dart';  
 
   // (this page) methods
   void _buildTriggered() {
-    Utils.log( _filename, '_buildTriggered()');
+    Utils.log( filename, '_buildTriggered()');
   }  
 
   Padding _makeRow( BuildContext context, label, String desc, String page) {

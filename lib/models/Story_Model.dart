@@ -1,3 +1,8 @@
+
+//  This helper model class
+//  converts fetched JSON into the
+//  named class
+
 class Story_Model {
   String? title;
   String? author;

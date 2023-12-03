@@ -6,6 +6,11 @@ import '../../classes/Utils.dart';
 import '../widgets/Drawer_Widget.dart';
 import '../classes/Story.dart';
 
+//  ----------------------------------------------------
+//  This stateless page displays the "cover" of a story.
+//  (Title, author, cover image)
+//  ----------------------------------------------------
+
 class Title_Page extends StatelessWidget {
   Title_Page({super.key});
 

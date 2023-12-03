@@ -4,9 +4,11 @@ import 'Config.dart';
 import 'Utils.dart';
 import 'package:http/http.dart' as http;
 
-//  Presenting the dead simple "Conn" class version 1.25, used
+//  ------------------------------------------------------------
+//  Presenting the dead simple "Conn" class (version 2.0) used
 //  to make server connections and fetch JSON...
 //  For a *REALLY* thourough explanation see END NOTES below...
+//  ------------------------------------------------------------
 
 class Conn {
 
@@ -62,7 +64,3 @@ class Conn {
 //
 //  If the connection didn't work, and no JSON was returned,
 //  Conn.payload is an enpty String.
-//
-//  Finally, if fetch() is passed testServer=true the fetch
-//  will try to force a fetch from the debug server
-//  (which is https://panelsplus.net)

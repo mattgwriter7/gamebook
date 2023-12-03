@@ -2,7 +2,8 @@
 
 import 'package:flutter/foundation.dart';
 
-//  Presenting the dead simple "Utils" class.
+//  Presenting the dead simple "Utils"
+//  class (version 1.0).
 //  This version does only one thing: it
 //  does console logs (with a timestamp and
 //  a ">>" which is used to filter stuff out

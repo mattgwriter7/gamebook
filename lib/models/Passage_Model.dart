@@ -1,3 +1,8 @@
+
+//  This helper model class
+//  converts fetched JSON into the
+//  named class
+
 class Passage_Model {
   String? key;
   String? title;

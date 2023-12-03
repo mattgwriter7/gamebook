@@ -55,9 +55,8 @@ class MyApp extends StatelessWidget {
       initialRoute: 'Start_Page',
       //  initialRoute: 'Dummies_Page',
       routes: {
-        //  start and end pages
+        //  First page of the App is:
         'Start_Page': (context) => const Start_Page(),
-        'End_Page': (context) => const End_Page(),
         //  other pages
         'Title_Page': (context) => Title_Page(),
         'Passage_Page': (context) => const Passage_Page(),
