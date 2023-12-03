@@ -107,37 +107,35 @@ class _Passage_PageState extends State<Passage_Page> {
 
   Widget passageRow( BuildContext context, int index) {
 
-    double _image_bottom = 25;    //  this is how much padding is needed for images, which
-                                  //  is different when there is a caption!
+    Container bottom_box_padding = Container(height:25);
+    if ( Passage.image + Passage.caption + Passage.credit == '') bottom_box_padding = Container(height:0);
 
-    //  is there a caption (for image)?  
-    SizedBox caption_box = SizedBox(height:0);
-    if( Passage.caption != '') {
-      _image_bottom = 5;
-      caption_box = SizedBox( width: double.infinity, child: Padding(
-        padding: EdgeInsets.fromLTRB(25,0,25,25),
-        child: Text( Passage.caption, style: TextStyle( fontStyle: FontStyle.italic, fontSize: 14 ), textAlign: TextAlign.center, ),
+    //  is there an image?  
+    Container img_box = Container(height:0);
+    if( Passage.image != '') {
+      img_box = Container( height: 250, color: Colors.transparent, child: Padding(
+        padding: EdgeInsets.fromLTRB(25,0,25,0),
+        child: Image.network( '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png', 
+          fit: BoxFit.fitHeight,
+        ),
       ));
     }
 
-    //  if there is an aimge credit there cannot be a caption! (it uses
-    //  the same variable: caption_box)
+    //  is there an image credit?  
+    Container credit_box = Container(height:0);
     if( Passage.credit != '') {
-      _image_bottom = 2;
-      caption_box = SizedBox( width: double.infinity, child: Padding(
-        padding: EdgeInsets.fromLTRB(25,0,25,25),
+      credit_box = Container( width: double.infinity, color: Colors.transparent, child: Padding(
+        padding: EdgeInsets.fromLTRB(25,0,25,0),
         child: Text( Passage.credit, style: TextStyle( fontStyle: FontStyle.italic, fontSize: 12 ), textAlign: TextAlign.right, ),
       ));
     }
 
-    //  is there an image?  
-    SizedBox img_box = SizedBox(height:0);
-    if( Passage.image != '') {
-      img_box = SizedBox( height: 250, child: Padding(
-        padding: EdgeInsets.fromLTRB(25,0,25,_image_bottom),
-        child: Image.network( '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png', 
-          fit: BoxFit.fitHeight,
-        ),
+    //  is there an image caption?  
+    Container caption_box = Container(height:0);
+    if( Passage.caption != '') {
+      caption_box = Container( width: double.infinity, color: Colors.transparent, child: Padding(
+        padding: EdgeInsets.fromLTRB(25,5,25,0),
+        child: Text( Passage.caption, style: TextStyle( fontStyle: FontStyle.italic, fontSize: 14 ), textAlign: TextAlign.center, ),
       ));
     }
 
@@ -151,9 +149,13 @@ class _Passage_PageState extends State<Passage_Page> {
         );
       case 1: // IMAGE
         return  img_box;
-      case 2: // CAPTION
+      case 2: // CREDIT
+        return  credit_box;        
+      case 3: // CAPTION
         return  caption_box;        
-      case 3: // DESCRIPTION
+      case 4: // bottom_box_padding
+        return  bottom_box_padding;        
+      case 5: // DESCRIPTION
         return  Container( 
           width: double.infinity,
           child: Padding(
@@ -162,7 +164,7 @@ class _Passage_PageState extends State<Passage_Page> {
             textAlign: TextAlign.left, ),
           ),
         );
-      case 4: // WHAT DO YOU DO?
+      case 6: // WHAT DO YOU DO?
         return  Container( 
           child: Padding(
             padding: EdgeInsets.fromLTRB(25,30,25,30),
@@ -183,7 +185,7 @@ class _Passage_PageState extends State<Passage_Page> {
   }
 
   Widget fullyBuiltPassage() {
-    int index_max = 5+Passage.choice_text.length;
+    int index_max = 7+Passage.choice_text.length;
     return Column(
       children: List<Widget>.generate( index_max, (index) {
         return passageRow( context, index );
