@@ -80,7 +80,7 @@ class _Passage_PageState extends State<Passage_Page> {
               ),
           ),  
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.fromLTRB(16,12,12, 12 ),
+            padding: EdgeInsets.fromLTRB( 16,12,12, 12 ),
           ),                        
           onPressed: () {
             Utils.log( filename, 'clicked choice #' + index.toString() + ' ("${ Passage.choice_key[index] }")');
@@ -159,7 +159,13 @@ class _Passage_PageState extends State<Passage_Page> {
         return  Container( 
           child: Padding(
             padding: const EdgeInsets.fromLTRB(25,45,25,40),
-            child: Text( Passage.title, style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
+            child: GestureDetector(
+              child: Text( Passage.title, style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
+                //  for debugging, a long press will reload this passage
+                onLongPress: () { 
+                  Navigator.of(context).pushReplacementNamed('Fetch_Page');  
+                },              
+              ),
           ),
         );
       case 1: // IMAGE

@@ -31,7 +31,7 @@ class _Start_PageState extends State<Start_Page> {
   // (this page) variables
   static const String filename = 'Start_Page.dart';
   static bool loading_flag = true;
-  static String fail_mssg = 'Oops! The story could\nnot be loaded';
+  static String fail_mssg = '';
   static int fail_count = 0;
 
   // (this page) init and dispose
@@ -44,7 +44,7 @@ class _Start_PageState extends State<Start_Page> {
     //  reset story
     Config.story_started = false;
     loading_flag = true;
-    fail_mssg = 'Oops! The story could\nnot be loaded';
+    fail_mssg = 'Get ready to choose your\nown adventure!';
     fail_count = 0;
     
     //  if there is no story key, set it to DEFAULT
@@ -106,6 +106,7 @@ class _Start_PageState extends State<Start_Page> {
         loading_flag = false;
         if( fail_count > 4 ) { fail_mssg = 'Should you try a different\nStory Key?'; return; }
         if( fail_count > 2 ) { fail_mssg = 'Is your network\nconnected?'; return; }
+        fail_mssg = 'Oops! The story could\nnot be loaded';
       });  
     });     
     return;
@@ -209,9 +210,10 @@ class _Start_PageState extends State<Start_Page> {
                     height: 100,
                     color: Config.debug_flag ? Colors.green : Colors.transparent,
                     child: Center(
-                      child: Visibility(
-                        visible: !loading_flag,
-                        child: Text( fail_mssg, textAlign: TextAlign.center,)))),                        
+                      child: Text( 
+                        fail_mssg,
+                        textAlign: TextAlign.center,
+                        style: TextStyle( fontStyle: FontStyle.italic)))),                        
                     Container(
                       height: 56,
                       child: Padding(
