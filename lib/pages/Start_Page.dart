@@ -1,16 +1,19 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import '../classes/Conn.dart';
-import '../models/Passage_Model.dart';
-import '../models/Story_Model.dart';
+import 'dart:convert';
 import '../widgets/Drawer_Widget.dart';
 import '../classes/Config.dart';
 import '../classes/Utils.dart';
-import '../classes/Passage.dart';
 import '../classes/Story.dart';
+import '../classes/Conn.dart';
+import '../models/Story_Model.dart';
+
+//  ----------------------------------------------------
+//  This is the starting page of the App!  It is where
+//  a story gets fetched. (When the App is first run
+//  it will fetch the default story.)
+//  ----------------------------------------------------
 
 class Start_Page extends StatefulWidget {
   const Start_Page({ super.key });

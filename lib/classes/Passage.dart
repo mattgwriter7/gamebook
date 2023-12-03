@@ -1,5 +1,11 @@
 // ignore_for_file: file_names
 
+//  ----------------------------------------------------
+//  Presenting the "Passage" class (version 1.0)
+//  unique to this app.  A "passage" is a unique
+//  story write-up (title, block of text, choices, etc.)
+//  ----------------------------------------------------
+
 class Passage {
 
   static String title = '';                         //  0 is always title

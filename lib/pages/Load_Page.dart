@@ -5,6 +5,16 @@ import 'package:flutter/services.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 
+//  ----------------------------------------------------
+//  This page accepts user input as "Story Keys".  These
+//  simple keys -- only 4-8 characters, ALLCAPS -- are
+//  then used by the Start_Page.dart to fetch their
+//  corresponding stories.
+//  WILLFIX: There is an issue where some devices
+//  that are vertically short cause part of the text
+//  field to be obscured (when the keyboard is shown.)
+//  ----------------------------------------------------
+
 class Load_Page extends StatefulWidget {
   const Load_Page({ super.key });
 

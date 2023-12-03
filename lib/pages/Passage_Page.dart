@@ -7,6 +7,16 @@ import '../classes/Story.dart';
 import '../classes/Passage.dart';
 import '../widgets/Drawer_Widget.dart';
 
+//  ----------------------------------------------------
+//  This page is the UI part of the main loop of the 
+//  "game."  It is where the magic happens.  It takes
+//  the json fetched by "Fetch_Page.dart" and 
+//  displays it in the UI.
+//
+//  Furthermore, this page accepts choices made by the user
+//  to fetch the next passage.
+//  ----------------------------------------------------
+
 class Passage_Page extends StatefulWidget {
   const Passage_Page({ super.key });
 

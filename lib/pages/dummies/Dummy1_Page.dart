@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 
+//  This helper page serves as a template
+//  for future Stateless pages
+//  (and should be removed from Production)
+
 class Dummy1_Page extends StatelessWidget {
   const Dummy1_Page({super.key});
 

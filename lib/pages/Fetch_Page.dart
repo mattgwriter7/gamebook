@@ -1,14 +1,20 @@
 // ignore_for_file: camel_case_types
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
 import '../classes/Conn.dart';
 import '../classes/Passage.dart';
 import '../classes/Story.dart';
 import '../models/Passage_Model.dart';
+
+//  ----------------------------------------------------
+//  This page starts the main loop of the "game,"
+//  fetching the json to be used by the second part 
+//  of the loop: "Passage_Page.dart," which displays
+//  the data.
+//  ----------------------------------------------------
 
 class Fetch_Page extends StatefulWidget {
   const Fetch_Page({ super.key });
