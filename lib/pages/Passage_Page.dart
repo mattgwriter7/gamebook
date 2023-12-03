@@ -173,7 +173,7 @@ class _Passage_PageState extends State<Passage_Page> {
                 onLongPress: () { 
                   Navigator.of(context).pushReplacementNamed('Fetch_Page');  
                 },
-                child: Text('What Do You Do?', style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,)),
+                child: Text(Passage.choice_heading, style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,)),
           ),
         );    
       default:

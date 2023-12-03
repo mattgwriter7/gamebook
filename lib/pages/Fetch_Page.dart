@@ -69,6 +69,9 @@ class _Fetch_PageState extends State<Fetch_Page> {
         Passage.caption = json.caption!;
         Passage.credit = json.credit!;
         Passage.description = json.description!;
+        Passage.choice_heading = json.choice_heading!;
+
+        if ( Passage.choice_heading == '') Passage.choice_heading = Config.default_choice_heading;
          
          // empty choices
          Passage.clearChoices();

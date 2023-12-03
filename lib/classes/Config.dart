@@ -43,6 +43,7 @@ class Config {
   static const String server_address = 'https://panelsplus.net/other/gamebook/';      //  WILLFIX: THIS MUST CHANGE TO CORRECT SERVER!!
   static String STORY_KEY = '';                             //  this is which story to use (gets set in Start_Page when empty)     
   static String PASSAGE_KEY = 'START';                      //  this is which passage to fetch
+  static const String default_choice_heading = 'What Do You Do?';
   static bool story_started = false;
   static String license = 'This code is freely available at\n\https://github.com/mattgwriter7/gamebook\nand uses the standard MIT license';
 }
