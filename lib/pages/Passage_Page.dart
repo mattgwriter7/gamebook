@@ -120,6 +120,16 @@ class _Passage_PageState extends State<Passage_Page> {
       ));
     }
 
+    //  if there is an aimge credit there cannot be a caption! (it uses
+    //  the same variable: caption_box)
+    if( Passage.credit != '') {
+      _image_bottom = 2;
+      caption_box = SizedBox( width: double.infinity, child: Padding(
+        padding: EdgeInsets.fromLTRB(25,0,25,25),
+        child: Text( Passage.credit, style: TextStyle( fontStyle: FontStyle.italic, fontSize: 12 ), textAlign: TextAlign.right, ),
+      ));
+    }
+
     //  is there an image?  
     SizedBox img_box = SizedBox(height:0);
     if( Passage.image != '') {
@@ -130,7 +140,6 @@ class _Passage_PageState extends State<Passage_Page> {
         ),
       ));
     }
-
 
     switch ( index ) {
       case 0: // TITLE

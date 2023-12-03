@@ -5,9 +5,10 @@ class Passage {
   static String title = '';                         //  0 is always title
   static String image = '';                         //  1 is always image...
   static String caption = '';                       //  2... 
-  static String description = '';                   //  3...
-  static String choice_heading = '';                //  4...
-  static List<String> choice_text = [];             //  5 on are choices (of varying length)
+  static String credit = '';                    
+  static String description = '';               
+  static String choice_heading = '';            
+  static List<String> choice_text = [];             //  6 on are choices (of varying length)
   static List<String> choice_key = [];
 
   static void clearChoices () {
