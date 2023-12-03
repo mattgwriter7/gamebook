@@ -51,14 +51,37 @@ class Title_Page extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle( fontFamily: 'Headline1', fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black )),
                   ),
-                  Container(
-                    height: 240,
-                     //  this image is always called "book_cover.png"
-                     child: Image.network( '${ Config.server_address }${ Story.key }/assets/book_cover.png',) 
+                  Padding(
+                    padding: EdgeInsets.fromLTRB((MediaQuery.of(context).size.width/8),0,(MediaQuery.of(context).size.width/8),0),
+                    child: Container(
+                      //  book_cover.png should be 600x600 (or at least a square)
+                      width: double.infinity,
+                      child: FadeInImage.assetNetwork(
+                        placeholder: "assets/images/title_placeholder.png",
+                        image: '${ Config.server_address }${ Story.key }/assets/book_cover.png',
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        
+                      ), 
+                    ),
+                  ),
+                  //  WILLFIX: below is for image credit (in the future)
+                  Padding(
+                      padding: EdgeInsets.fromLTRB((MediaQuery.of(context).size.width/8),0,(MediaQuery.of(context).size.width/8),0),
+                      child: Container(
+                        width: double.infinity,
+                        child: Text('',
+                        textAlign: TextAlign.right,
+                        style: TextStyle( fontSize: 12)),
+                      )
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(30,5,30,20),
-                    child: Text(  Story.author, textAlign: TextAlign.center, ),
+                    child: Text(  
+                      Story.author, 
+                      textAlign: TextAlign.center, 
+                      style: TextStyle( fontWeight: FontWeight.bold ),  
+                    ),
                   ),
                   ElevatedButton(
                     child: Text('begin'),

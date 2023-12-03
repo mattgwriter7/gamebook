@@ -7,7 +7,7 @@ export 'End_Page.dart';
 export 'Title_Page.dart';
 export 'Passage_Page.dart';
 export 'Fetch_Page.dart';
-export 'Key_Page.dart';
+export 'Load_Page.dart';
 export 'Settings_Page.dart';
 export 'About_Page.dart';
 export 'More_Page.dart';
