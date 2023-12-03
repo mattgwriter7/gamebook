@@ -113,12 +113,17 @@ class _Passage_PageState extends State<Passage_Page> {
     //  is there an image?  
     Container img_box = Container(height:0);
     if( Passage.image != '') {
-      img_box = Container( height: 250, color: Colors.transparent, child: Padding(
-        padding: EdgeInsets.fromLTRB(25,0,25,0),
-        child: Image.network( '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png', 
-          fit: BoxFit.fitHeight,
-        ),
-      ));
+      img_box = Container(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(25,0,25,0),
+          child: Container(
+            //  book_cover.png should be 600x600 (or at least a square)
+            width: double.infinity,
+            child: Image.network( '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png',
+            fit: BoxFit.cover,) 
+          ),
+        ), 
+      );
     }
 
     //  is there an image credit?  
