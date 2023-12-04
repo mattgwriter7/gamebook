@@ -11,17 +11,92 @@ import '../../classes/Utils.dart';
 //  "View story credits," etc.
 //  ----------------------------------------------------
 
-class More_Page extends StatelessWidget {
-  const More_Page({super.key});
 
-  //  (this page) variables
-  static const String filename = 'More_Page.dart';  
+class More_Page extends StatefulWidget {
+  const More_Page({ super.key });
+
+  @override
+  State createState() => _More_PageState();
+}
+
+class _More_PageState extends State<More_Page> {
+
+  // (this page) variables
+  static const String filename = 'More_Page.dart';
+  static bool result = false;
+  
+  // (this page) init and dispose
+  @override
+  void initState() {
+    super.initState();
+    Utils.log( filename, 'initState()' );
+    WidgetsBinding.instance.addPostFrameCallback((_) => _addPostFrameCallbackTriggered(context));  
+  }
+
+  @override
+  void dispose() {
+    Utils.log( filename, 'dispose()');
+    super.dispose();
+  }
+
+  //  from:
+  //  https://stackoverflow.com/questions/63494817/flutter-returning-content-from-alertdialog
+  Future<bool> confirmContinue( String prompt ) async {
+    return await showDialog(
+      barrierDismissible: false,
+      barrierColor: Colors.black.withOpacity( 0.75 ),
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text( prompt,
+              style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20 ) 
+            ),
+            SizedBox( height: 20 ),
+            Text( 'You will lose all progress if you quit.'),
+          ],
+        ),
+        actions: [
+          ElevatedButton.icon(
+            onPressed: () {
+              Navigator.pop(context, false);
+            }, 
+            icon: const Icon(
+            Icons.close,
+            // color: Colors.pink,
+            size: 16.0,
+          ),
+            label: Text('no '),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0,0,5,0),
+            child: ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pop(context, true);
+              }, 
+              icon: const Icon(
+              Icons.check,
+              size: 16.0,
+            ),
+              label: Text('yes '),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   // (this page) methods
   void _buildTriggered() {
     Utils.log( filename, '_buildTriggered()');
-  }  
+  }
 
+  void _addPostFrameCallbackTriggered( context ) {
+    Utils.log( filename, '_addPostFrameCallbackTriggered()');
+  }
+
+  // (this page) build
   @override
   Widget build(BuildContext context) {
 
@@ -92,10 +167,13 @@ class More_Page extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.fromLTRB(16,12,12, 12 ),
                     ),                        
-                    onPressed: () {
-                      Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-                        Navigator.of(context).popUntil(ModalRoute.withName('Title_Page'));
-                      });
+                    onPressed: () async {
+                      result = await confirmContinue( 'Are you sure you want to quit?');
+                      if( result ) {                      
+                        Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                          Navigator.of(context).popUntil(ModalRoute.withName('Title_Page'));
+                        });
+                      }
                     },
                   ),
                 ),
@@ -113,11 +191,14 @@ class More_Page extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.fromLTRB(16,12,12, 12 ),
                     ),                        
-                    onPressed: () {
-                      Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
-                        //Navigator.of(context).pushNamedAndRemoveUntil('Key_Page', (Route route) => false);
-                        Navigator.of(context).popAndPushNamed('Key_Page');
-                      }); 
+                    onPressed: () async {
+                      result = await confirmContinue( 'Are you sure you want to quit?');
+                      if( result ) {
+                        Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
+                          //Navigator.of(context).pushNamedAndRemoveUntil('Key_Page', (Route route) => false);
+                          Navigator.of(context).popAndPushNamed('Key_Page');
+                        }); 
+                      }
                     },
                   ),
                 ),

@@ -66,7 +66,6 @@ class Title_Page extends StatelessWidget {
                         image: '${ Config.server_address }${ Story.key }/assets/book_cover.png',
                         fit: BoxFit.cover,
                         width: double.infinity,
-                        
                       ), 
                     ),
                   ),

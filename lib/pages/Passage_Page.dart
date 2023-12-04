@@ -121,6 +121,7 @@ class _Passage_PageState extends State<Passage_Page> {
     if ( Passage.image + Passage.caption + Passage.credit == '') bottom_box_padding = Container(height:0);
 
     //  is there an image?  
+    //  ( it is recommended they be 700x400 pixels so the placeholder works )
     Container img_box = Container(height:0);
     if( Passage.image != '') {
       img_box = Container(
@@ -129,8 +130,12 @@ class _Passage_PageState extends State<Passage_Page> {
           child: Container(
             //  book_cover.png should be 600x600 (or at least a square)
             width: double.infinity,
-            child: Image.network( '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png',
-            fit: BoxFit.cover,) 
+            child: FadeInImage.assetNetwork(
+              placeholder: "assets/images/passage_placeholder_grey.png",
+              image: '${ Config.server_address }${ Story.key }/assets/${ Passage.image }.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ), 
           ),
         ), 
       );
