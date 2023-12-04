@@ -59,10 +59,11 @@ class Title_Page extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.fromLTRB((MediaQuery.of(context).size.width/8),0,(MediaQuery.of(context).size.width/8),0),
                     child: Container(
+                      // color: Color(0xFFeeeeee),
                       //  book_cover.png should be 600x600 (or at least a square)
                       width: double.infinity,
                       child: FadeInImage.assetNetwork(
-                        placeholder: "assets/images/title_placeholder_white.png",
+                        placeholder: "assets/images/title_placeholder_transparent.png",
                         image: '${ Config.server_address }${ Story.key }/assets/book_cover.png',
                         fit: BoxFit.cover,
                         width: double.infinity,

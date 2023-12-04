@@ -51,10 +51,11 @@ class _More_PageState extends State<More_Page> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text( prompt,
-              style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20 ) 
+              style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20 ),
+              textAlign: TextAlign.center, 
             ),
             SizedBox( height: 20 ),
-            Text( 'You will lose all progress if you quit.'),
+            Text( 'Doing so means you lose all progress and will need to start over.'),
           ],
         ),
         actions: [
@@ -168,7 +169,7 @@ class _More_PageState extends State<More_Page> {
                       padding: EdgeInsets.fromLTRB(16,12,12, 12 ),
                     ),                        
                     onPressed: () async {
-                      result = await confirmContinue( 'Are you sure you want to quit?');
+                      result = await confirmContinue( 'Are you sure you\nwant to quit?');
                       if( result ) {                      
                         Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
                           Navigator.of(context).popUntil(ModalRoute.withName('Title_Page'));
@@ -192,7 +193,7 @@ class _More_PageState extends State<More_Page> {
                       padding: EdgeInsets.fromLTRB(16,12,12, 12 ),
                     ),                        
                     onPressed: () async {
-                      result = await confirmContinue( 'Are you sure you want to quit?');
+                      result = await confirmContinue( 'Are you sure you\want to quit?');
                       if( result ) {
                         Future.delayed( Duration(milliseconds: Config.short_delay ), () async {
                           //Navigator.of(context).pushNamedAndRemoveUntil('Key_Page', (Route route) => false);
