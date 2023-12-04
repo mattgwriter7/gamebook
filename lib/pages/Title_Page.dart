@@ -62,7 +62,7 @@ class Title_Page extends StatelessWidget {
                       //  book_cover.png should be 600x600 (or at least a square)
                       width: double.infinity,
                       child: FadeInImage.assetNetwork(
-                        placeholder: "assets/images/title_placeholder.png",
+                        placeholder: "assets/images/title_placeholder_white.png",
                         image: '${ Config.server_address }${ Story.key }/assets/book_cover.png',
                         fit: BoxFit.cover,
                         width: double.infinity,
