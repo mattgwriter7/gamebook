@@ -90,7 +90,7 @@ class _Fetch_PageState extends State<Fetch_Page> {
         }
 
         //  add one more choice: "More Options"
-        Passage.addChoice( 'More Options', 'MORE');
+        Passage.addChoice( 'More options', 'MORE');
 
         //  Fetches successfull, so redirect!
         Future.delayed( Duration(milliseconds: Config.long_delay ), () async {
