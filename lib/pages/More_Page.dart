@@ -114,10 +114,8 @@ class _More_PageState extends State<More_Page> {
           appBar: AppBar(
               title: const Text( 'More Options' ),
               centerTitle: true,
-              backgroundColor: Colors.pink,
               elevation: 0,
-              foregroundColor: Colors.black,
-            ),
+            ), 
           //  drawer: Drawer_Widget(),
           body: Container(
             width: double.infinity,

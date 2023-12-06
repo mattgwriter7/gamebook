@@ -40,10 +40,8 @@ class Credits_Page extends StatelessWidget {
           appBar: AppBar(
               title: const Text( 'Credits' ),
               centerTitle: true,
-              backgroundColor: Colors.pink,
               elevation: 0,
-              foregroundColor: Colors.black,
-            ),
+            ), 
           //  drawer: Drawer_Widget(),
           body: Container(
             width: double.infinity,

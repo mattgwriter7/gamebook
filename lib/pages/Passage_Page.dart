@@ -254,9 +254,7 @@ class _Passage_PageState extends State<Passage_Page> {
             appBar: AppBar(
               title: const Text( '' ),
               centerTitle: true,
-              backgroundColor: Colors.pink,
               elevation: 0,
-              foregroundColor: Colors.black,
             ), //AppBar
             drawer: Drawer_Widget(),
             body: Container(

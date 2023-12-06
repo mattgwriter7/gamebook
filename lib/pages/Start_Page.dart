@@ -132,10 +132,8 @@ class _Start_PageState extends State<Start_Page> {
             appBar: AppBar(
               title: const Text( '' ),
               centerTitle: true,
-              backgroundColor: Colors.pink,
               elevation: 0,
-              foregroundColor: Colors.black,
-            ), //AppBar
+            ),  //AppBar
             drawer: Drawer_Widget(),
             body: Container(
               width: double.infinity,
