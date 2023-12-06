@@ -35,10 +35,8 @@ class About_Page extends StatelessWidget {
           appBar: AppBar(
               title: const Text( 'About' ),
               centerTitle: true,
-              backgroundColor: Colors.pink,
               elevation: 0,
-              foregroundColor: Colors.black,
-            ),
+            ), 
           //  drawer: Drawer_Widget(),
           body: Container(
             width: double.infinity,

@@ -101,9 +101,7 @@ class _Load_PageState extends State<Load_Page> {
             appBar: AppBar(
               title: const Text( 'Load Story' ),
               centerTitle: true,
-              backgroundColor: Colors.pink,
               elevation: 0,
-              foregroundColor: Colors.black,
             ), //AppBar
             // drawer: DrawerWidget(),
             body: Container(
