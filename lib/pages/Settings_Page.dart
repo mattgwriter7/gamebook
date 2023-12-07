@@ -33,7 +33,7 @@ class Settings_Page extends StatelessWidget {
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
           appBar: AppBar(
-              title: const Text( 'Settings' ),
+              title: const Text( 'Settings', style: TextStyle(color: Colors.white)),
               centerTitle: true,
               elevation: 0,
             ), 

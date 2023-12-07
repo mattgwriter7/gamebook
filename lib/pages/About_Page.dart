@@ -33,7 +33,7 @@ class About_Page extends StatelessWidget {
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
           appBar: AppBar(
-              title: const Text( 'About' ),
+              title: const Text( 'About', style: TextStyle(color: Colors.white)),
               centerTitle: true,
               elevation: 0,
             ), 

@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 class Config {
   
   static const  String    app_name                  = "gamebook";
-  static const  String    app_version               = "1.0.alpha.16";
+  static const  String    app_version               = "1.0.alpha.17";
   static bool             debug_flag                = false;
   
   //  timeouts and delays
