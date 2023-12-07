@@ -1,5 +1,5 @@
-# ~ gamebook ~
-This is a choose-your-own adventure style game.
+# gamebook   
+This is a choose-your-own adventure style game.   
 
 <img src="https://mattgwriter7.com/assets/github/gamebook_thumb_small.png" width="150" title="screen cap form phone">     
 
