@@ -1,6 +1,11 @@
 # ~ gamebook ~
 This is a choose-your-own adventure style game.
 
+<img src="https://mattgwriter7.com/assets/github/gamebook_thumb_small.png" width="150" title="screen cap form phone">     
+
+You can see this code in action here:   
+[gamebook demo](https://mattgwriter7.com/?k=b)     
+
 ## DETAILS
 This project takes inspiration from the gamebooks like 
 "Fighting Fantasy" by Steve Jackson and Ian Livingstone from the early 1980s, although the story genre is unimportant.
