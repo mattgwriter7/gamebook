@@ -112,7 +112,7 @@ class _More_PageState extends State<More_Page> {
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
           appBar: AppBar(
-              title: const Text( 'More Options' ),
+              title: const Text( 'More Options', style: TextStyle(color: Colors.white)),
               centerTitle: true,
               elevation: 0,
             ), 

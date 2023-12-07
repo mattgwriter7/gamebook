@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../classes/Config.dart';
 import '../../classes/Utils.dart';
+import '../widgets/Drawer_Widget.dart';
 
 //  ----------------------------------------------------
 //  This page accepts user input as "Story Keys".  These
@@ -99,11 +100,11 @@ class _Load_PageState extends State<Load_Page> {
             resizeToAvoidBottomInset: true,  
             //  backgroundColor: Config.main_background_color,
             appBar: AppBar(
-              title: const Text( 'Load Story' ),
+              title: const Text( 'Load Story', style: TextStyle(color: Colors.white) ),
               centerTitle: true,
               elevation: 0,
             ), //AppBar
-            // drawer: DrawerWidget(),
+            //  drawer: Drawer_Widget(),
             body: Container(
               width: double.infinity,
               child: Column(

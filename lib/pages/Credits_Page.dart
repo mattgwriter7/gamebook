@@ -38,7 +38,7 @@ class Credits_Page extends StatelessWidget {
         child: Scaffold(
           resizeToAvoidBottomInset: false,  
           appBar: AppBar(
-              title: const Text( 'Credits' ),
+              title: const Text( 'Credits', style: TextStyle(color: Colors.white)),
               centerTitle: true,
               elevation: 0,
             ), 
