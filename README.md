@@ -7,8 +7,8 @@ You can see this code in action here:
 [gamebook demo](https://mattgwriter7.com/?k=b)     
 (this is a web version in HTML/Css/JS)
 
-Here is a Youtube Shorts demo:
-[video](https://www.youtube.com/shorts/S66xKu2qeDs)
+Here is a Youtube Shorts demo:    
+[video](https://www.youtube.com/shorts/S66xKu2qeDs)     
 
 ## DETAILS
 This project takes inspiration from the gamebooks like 
