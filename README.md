@@ -1,7 +1,7 @@
 # gamebook   
 This is a choose-your-own adventure style game.   
 
-<img src="https://mattgwriter7.com/assets/github/gamebook_thumb_small.png" width="150" title="screen cap form phone">     
+<img src="https://mattgwriter7.com/assets/github/gamebook_thumb_small.png" width="300" title="screen cap from phone">     
 
 You can see this code in action here:   
 [gamebook demo](https://mattgwriter7.com/?k=b)     
